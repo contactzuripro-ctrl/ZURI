@@ -74,6 +74,8 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 
 | 2026-07-10 | Mode nuit | Bouton « Mode nuit / Mode jour » (lune/soleil) en bas du menu, au-dessus de Paramètres. Bascule la classe `dark` sur `<html>` : toutes les couleurs neutres du contenu sont des variables CSS redéfinies dans le bloc `.dark` de `globals.css` (fond `#131315`, cartes `#1d1d20`, textes inversés, statuts éclaircis). Choix persisté dans `localStorage` (`zuri-theme`) et réappliqué avant le premier rendu par un script inline dans `<head>` (pas de flash). Source de vérité = classe du `<html>` lue via `useSyncExternalStore` + MutationObserver | `src/components/layout/ThemeToggle.tsx`, `Sidebar.tsx`, `src/app/layout.tsx`, `globals.css` (tokens `page`/`surface`/`elevated`/`hairline`) |
 
+| 2026-07-10 | Accent rose poudré | Le doré est remplacé par du rose poudré (#E39BB1) partout : pilule active du menu, logo, pastille et curseur de la barre de recherche, dégradé de l'anneau, couleur d'Awa dans le calendrier. Le token est renommé `accent-400/500` : pour changer de couleur d'accent, ne modifier que ces 2 variables dans `globals.css` | `src/app/globals.css`, `Sidebar`, `SidebarLink`, `SearchBar`, `features/agenda/data.ts` |
+
 ### Notes techniques
 - Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
 - Les types métier partagés (Payment, Client, Appointment, Service, Employee, StockItem, Campaign…) sont dans `src/types/index.ts`.

@@ -24,7 +24,7 @@ export function SidebarLink({ item }: SidebarLinkProps) {
       href={item.href}
       className={`flex items-center gap-3 rounded-[1.6rem_1.1rem_1.7rem_1rem/1.1rem_1.7rem_1rem_1.6rem] px-4 py-3 text-[15px] transition-all ${
         isActive
-          ? "bg-gold-500 font-semibold text-plum-950 shadow-md"
+          ? "bg-accent-500 font-semibold text-plum-950 shadow-md"
           : "text-cream-200 hover:bg-white/10 hover:text-white active:bg-white/20"
       }`}
     >

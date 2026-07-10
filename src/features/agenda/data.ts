@@ -5,7 +5,7 @@ export const employees = ["Awa", "Binta", "Chantal"] as const;
 
 /** Couleur attribuée à chaque employée dans les vues du calendrier. */
 export const employeeColors: Record<string, string> = {
-  Awa: "bg-gold-500 text-plum-950",
+  Awa: "bg-accent-500 text-plum-950",
   Binta: "bg-plum-700 text-white",
   Chantal: "bg-success-700 text-white",
 };

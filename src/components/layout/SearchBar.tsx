@@ -64,9 +64,9 @@ export function SearchBar() {
   const typedHint = useTypewriter(PLACEHOLDER_HINTS);
 
   return (
-    <div className="search-ring rounded-full p-[2px] transition-shadow duration-300 focus-within:shadow-[0_0_18px_rgba(185,138,68,0.4)]">
+    <div className="search-ring rounded-full p-[2px] transition-shadow duration-300 focus-within:shadow-[0_0_18px_rgba(227,155,177,0.55)]">
       <label className="group relative flex w-64 items-center gap-3 rounded-full bg-elevated px-1.5 py-1.5 transition-all duration-300 ease-out focus-within:w-96">
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gold-500 text-white">
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent-500 text-plum-950">
           <Search size={16} strokeWidth={2.2} />
         </span>
         <input
@@ -82,7 +82,7 @@ export function SearchBar() {
             className="pointer-events-none absolute left-12 text-sm text-ink-400"
           >
             {typedHint}
-            <span className="animate-cursor-blink ml-0.5 font-medium text-gold-500">
+            <span className="animate-cursor-blink ml-0.5 font-medium text-accent-500">
               |
             </span>
           </span>

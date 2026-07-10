@@ -33,7 +33,7 @@ export function Sidebar() {
       />
 
       <div className="relative mb-8 flex items-center gap-3 px-3">
-        <span className="flex size-12 items-center justify-center rounded-[55%_45%_62%_38%/48%_60%_40%_52%] bg-gold-500 text-lg font-bold text-plum-950 shadow-md">
+        <span className="flex size-12 items-center justify-center rounded-[55%_45%_62%_38%/48%_60%_40%_52%] bg-accent-500 text-lg font-bold text-plum-950 shadow-md">
           Z
         </span>
         <span className="text-xl font-semibold text-white">Zuri</span>
