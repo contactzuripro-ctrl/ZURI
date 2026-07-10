@@ -6,14 +6,24 @@ import { fieldLabelClass } from "@/components/ui/FormField";
 
 interface PhotoFieldProps {
   label?: string;
+  /** « galet » pour les photos de personnes, « arrondi » pour les prestations. */
+  shape?: "galet" | "arrondi";
 }
 
+const shapeClasses = {
+  galet: "rounded-[55%_45%_62%_38%/48%_60%_40%_52%]",
+  arrondi: "rounded-2xl",
+};
+
 /**
- * Champ photo de profil d'une modale : pastille galet cliquable (appareil
- * photo, puis aperçu de l'image choisie) + bouton. Aperçu local uniquement —
- * rien n'est envoyé tant qu'il n'y a pas de vraie API.
+ * Champ photo d'une modale : pastille cliquable (appareil photo, puis aperçu
+ * de l'image choisie) + bouton. Aperçu local uniquement — rien n'est envoyé
+ * tant qu'il n'y a pas de vraie API.
  */
-export function PhotoField({ label = "Photo de profil" }: PhotoFieldProps) {
+export function PhotoField({
+  label = "Photo de profil",
+  shape = "galet",
+}: PhotoFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
@@ -33,7 +43,7 @@ export function PhotoField({ label = "Photo de profil" }: PhotoFieldProps) {
           type="button"
           onClick={openPicker}
           aria-label="Choisir une photo"
-          className="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-[55%_45%_62%_38%/48%_60%_40%_52%] border border-dashed border-ink-400 text-ink-400 transition-colors hover:border-accent-400 hover:text-accent-500"
+          className={`flex size-16 shrink-0 items-center justify-center overflow-hidden ${shapeClasses[shape]} border border-dashed border-ink-400 text-ink-400 transition-colors hover:border-accent-400 hover:text-accent-500`}
         >
           {previewUrl ? (
             /* Aperçu d'un blob local : next/image ne s'applique pas ici */

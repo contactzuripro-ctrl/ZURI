@@ -1,13 +1,30 @@
-import { ServiceCard } from "@/features/prestations/ServiceCard";
+"use client";
+
+import { useState } from "react";
+import { CategoryFilter } from "@/features/prestations/CategoryFilter";
+import { ServicesTable } from "@/features/prestations/ServicesTable";
 import { services } from "@/features/prestations/data";
 
-/** Grille du catalogue des prestations. */
+/**
+ * Catalogue des prestations : pilules de filtre par catégorie au-dessus
+ * du tableau (Prestation, Catégorie, Durée, Prix, Promotion).
+ */
 export function ServicesCatalog() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const categories = [...new Set(services.map((service) => service.category))];
+  const visibleServices = selectedCategory
+    ? services.filter((service) => service.category === selectedCategory)
+    : services;
+
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-      {services.map((service) => (
-        <ServiceCard key={service.id} service={service} />
-      ))}
+    <div className="space-y-6">
+      <CategoryFilter
+        categories={categories}
+        selected={selectedCategory}
+        onChange={setSelectedCategory}
+      />
+      <ServicesTable services={visibleServices} />
     </div>
   );
 }

@@ -7,6 +7,7 @@ import { Modal } from "@/components/ui/Modal";
 import { ModalFooter } from "@/components/ui/ModalFooter";
 import { FormField } from "@/components/ui/FormField";
 import { SelectField } from "@/components/ui/SelectField";
+import { PhotoField } from "@/components/ui/PhotoField";
 
 /** Bouton « Nouvelle prestation » + sa modale (UI seule pour l'instant). */
 export function NewServiceAction() {
@@ -31,6 +32,7 @@ export function NewServiceAction() {
           }}
         >
           <div className="space-y-4">
+            <PhotoField label="Photo de la prestation" shape="arrondi" />
             <FormField
               label="Nom de la prestation"
               name="serviceName"

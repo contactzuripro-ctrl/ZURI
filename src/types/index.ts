@@ -41,6 +41,8 @@ export interface Service {
   id: string;
   name: string;
   category: string;
+  /** Photo illustrant la prestation, dans /public/prestations (obligatoire). */
+  photoUrl: string;
   price: number;
   durationMinutes: number;
   promotion?: string;

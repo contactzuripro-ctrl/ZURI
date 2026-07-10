@@ -3,6 +3,16 @@ export function formatAmount(amount: number): string {
   return `${amount.toLocaleString("fr-FR").replace(/ /g, " ")} F`;
 }
 
+/** Formate une durée en minutes : 150 -> "2h30", 45 -> "45 min". */
+export function formatDuration(minutes: number): string {
+  if (minutes < 60) {
+    return `${minutes} min`;
+  }
+  const hours = Math.floor(minutes / 60);
+  const rest = minutes % 60;
+  return rest === 0 ? `${hours}h` : `${hours}h${String(rest).padStart(2, "0")}`;
+}
+
 /** Formate un pourcentage : 0.32 -> "32 %". */
 export function formatPercent(ratio: number): string {
   return `${Math.round(ratio * 100)} %`;
