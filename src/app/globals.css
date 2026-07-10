@@ -72,6 +72,39 @@ body {
   animation: cursor-blink 1s step-end infinite;
 }
 
+/* Ouverture du menu déroulant de la recherche : fondu + glissement + zoom */
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@utility animate-dropdown-in {
+  animation: dropdown-in 0.22s ease-out both;
+  transform-origin: top right;
+}
+
+/* Apparition en cascade des éléments du menu déroulant */
+@keyframes dropdown-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-dropdown-item {
+  animation: dropdown-item-in 0.25s ease-out both;
+}
+
 /* Anneau en dégradé statique de la barre de recherche (halo au focus seulement) */
 @utility search-ring {
   background-image: linear-gradient(

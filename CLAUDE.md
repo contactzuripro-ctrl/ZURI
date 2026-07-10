@@ -78,6 +78,8 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 
 | 2026-07-10 | États rose du menu | Les liens du menu réagissent en rose : survol = voile rose 25 % + texte rose, appui = rose 50 %, et **le lien cliqué devient la pilule rose pleine immédiatement** (sélection optimiste dans `Sidebar` : état `clickedHref` prioritaire sur `usePathname` jusqu'à ce que l'URL confirme) | `src/components/layout/Sidebar.tsx`, `SidebarLink.tsx`, `ThemeToggle.tsx` |
 
+| 2026-07-10 | Menu déroulant de la recherche | Au focus sur la barre de recherche, un panneau s'ouvre en dessous listant les pages du menu (icône + nom) ; la saisie filtre la liste, cliquer navigue et referme. Animation d'ouverture : fondu + glissement + zoom du panneau (220 ms) et apparition en cascade des éléments (35 ms de décalage chacun). Fermeture au clic extérieur (hook `useCloseOnOutsideClick`) et à Échap. Vérifié au navigateur (Playwright) : ouverture, filtre « sto » → Stock, navigation OK | `src/components/layout/SearchBar.tsx` (réutilise `navigation.ts`), keyframes `dropdown-in`/`dropdown-item-in` dans `globals.css` |
+
 ### Notes techniques
 - Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
 - Les types métier partagés (Payment, Client, Appointment, Service, Employee, StockItem, Campaign…) sont dans `src/types/index.ts`.
