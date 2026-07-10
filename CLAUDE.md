@@ -63,6 +63,8 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 | 2026-07-10 | Design Neumorphism | Refonte du contenu en soft UI : surfaces couleur du fond, relief par double ombre (`shadow-neu`, `shadow-neu-sm`), éléments actifs/creusés en ombre interne (`shadow-neu-inset`, `shadow-neu-inset-sm`) — badges, boutons (enfoncés au clic), barres de progression, cartes RDV | `src/app/globals.css` (tokens d'ombres), `src/components/ui/`, features |
 | 2026-07-10 | Menu Material + Organic | Sidebar façon navigation drawer M3 (remplace un essai glassmorphism supprimé) : surface prune unie avec élévation, item actif = pilule pleine or, survol = state layer `bg-white/10`. Touche Organic : bord droit très arrondi (`rounded-r-[2.5rem]`), logo et pilules aux coins asymétriques (border-radius irréguliers « galet »), 2 blobs décoratifs en fond | `src/components/layout/` (`Sidebar`, `SidebarLink`), `src/app/layout.tsx` |
 
+| 2026-07-10 | Bouton ouvrir/fermer le menu | Bouton neumorphique dans l'en-tête de chaque page qui replie/déplie la sidebar (animation 300 ms). État partagé via contexte React (`SidebarProvider` dans le layout racine, hook `useSidebar`) | `src/components/layout/` (`SidebarContext`, `SidebarToggle`, `PageHeader`, `Sidebar`), `src/app/layout.tsx` |
+
 ### Notes techniques
 - Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
 - Les types métier partagés (Payment, Client, Appointment, Service, Employee, StockItem, Campaign…) sont dans `src/types/index.ts`.

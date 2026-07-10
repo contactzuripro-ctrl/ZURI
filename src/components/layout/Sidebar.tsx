@@ -1,6 +1,7 @@
 "use client";
 
 import { SidebarLink } from "@/components/layout/SidebarLink";
+import { useSidebar } from "@/components/layout/SidebarContext";
 import {
   mainNavItems,
   settingsNavItem,
@@ -12,8 +13,14 @@ import {
  * organiques discrètes en fond pour l'aspect naturel.
  */
 export function Sidebar() {
+  const { isOpen } = useSidebar();
+
   return (
-    <aside className="relative flex w-64 shrink-0 flex-col overflow-hidden rounded-r-[2.5rem] bg-plum-900 px-3 py-6 shadow-[4px_0_16px_rgba(46,19,39,0.35)]">
+    <aside
+      className={`relative flex shrink-0 flex-col overflow-hidden rounded-r-[2.5rem] bg-plum-900 py-6 shadow-[4px_0_16px_rgba(46,19,39,0.35)] transition-all duration-300 ${
+        isOpen ? "w-64 px-3" : "w-0 px-0 opacity-0"
+      }`}
+    >
       {/* Blobs organiques décoratifs, sous le contenu */}
       <div
         aria-hidden
