@@ -13,7 +13,7 @@ interface CalendarHeaderProps {
   onViewChange: (view: CalendarView) => void;
 }
 
-/** Bouton rond neumorphique de navigation (mois/jour précédent ou suivant). */
+/** Bouton rond discret de navigation (mois/jour précédent ou suivant). */
 function NavButton({
   onClick,
   label,
@@ -28,7 +28,7 @@ function NavButton({
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="flex size-10 items-center justify-center rounded-full bg-cream-100 text-plum-800 shadow-neu-sm transition-shadow active:shadow-neu-inset"
+      className="flex size-9 items-center justify-center rounded-full text-ink-600 transition-colors hover:bg-surface hover:text-ink-900"
     >
       {children}
     </button>
@@ -36,8 +36,8 @@ function NavButton({
 }
 
 /**
- * Barre de contrôle du calendrier : navigation précédent/suivant,
- * bouton « Aujourd'hui », titre courant et bascule de vue Mois/Jour.
+ * Barre de contrôle minimaliste du calendrier : navigation, bouton
+ * « Aujourd'hui », titre courant et bascule Jour/Mois façon segmented control.
  */
 export function CalendarHeader({
   title,
@@ -49,7 +49,7 @@ export function CalendarHeader({
 }: CalendarHeaderProps) {
   return (
     <div className="flex flex-wrap items-center justify-between gap-4">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-1">
         <NavButton onClick={onPrevious} label="Précédent">
           <ChevronLeft size={20} />
         </NavButton>
@@ -59,23 +59,25 @@ export function CalendarHeader({
         <button
           type="button"
           onClick={onToday}
-          className="rounded-full bg-cream-100 px-4 py-2 text-sm font-semibold text-plum-800 shadow-neu-sm transition-shadow active:shadow-neu-inset"
+          className="ml-1 rounded-full px-4 py-2 text-sm font-medium text-ink-600 transition-colors hover:bg-surface hover:text-ink-900"
         >
           Aujourd&apos;hui
         </button>
-        <h2 className="ml-2 text-lg font-bold capitalize">{title}</h2>
+        <h2 className="ml-3 text-lg font-semibold capitalize tracking-tight">
+          {title}
+        </h2>
       </div>
 
-      <div className="flex gap-1 rounded-full bg-cream-100 p-1.5 shadow-neu-inset-sm">
+      <div className="flex gap-0.5 rounded-full bg-surface p-1">
         {(["jour", "mois"] as const).map((viewOption) => (
           <button
             key={viewOption}
             type="button"
             onClick={() => onViewChange(viewOption)}
-            className={`rounded-full px-4 py-1.5 text-sm font-semibold capitalize transition-all ${
+            className={`rounded-full px-4 py-1.5 text-sm font-medium capitalize transition-colors ${
               view === viewOption
-                ? "bg-plum-800 text-white shadow-md"
-                : "text-ink-600 hover:text-plum-800"
+                ? "bg-white text-ink-900 shadow-sm"
+                : "text-ink-600 hover:text-ink-900"
             }`}
           >
             {viewOption}

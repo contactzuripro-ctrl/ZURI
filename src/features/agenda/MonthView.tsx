@@ -45,7 +45,7 @@ export function MonthView({
       {weeks.map((week) => (
         <div
           key={toIsoDate(week[0])}
-          className="grid grid-cols-7 border-t border-cream-200/70"
+          className="grid grid-cols-7 border-t border-hairline"
         >
           {week.map((day) => {
             const isCurrentMonth = day.getMonth() === monthDate.getMonth();
@@ -61,14 +61,14 @@ export function MonthView({
                 key={toIsoDate(day)}
                 type="button"
                 onClick={() => onSelectDay(day)}
-                className={`flex min-h-24 flex-col items-stretch gap-1 p-1.5 text-left transition-colors hover:bg-cream-50 ${
+                className={`flex min-h-24 flex-col items-stretch gap-1 p-1.5 text-left transition-colors hover:bg-white ${
                   isCurrentMonth ? "" : "opacity-40"
                 }`}
               >
                 <span
                   className={`self-end text-sm ${
                     isToday
-                      ? "flex size-7 items-center justify-center rounded-full bg-gold-500 font-bold text-plum-950"
+                      ? "flex size-7 items-center justify-center rounded-full bg-plum-900 font-semibold text-white"
                       : "px-1.5 font-medium text-ink-600"
                   }`}
                 >

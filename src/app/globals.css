@@ -1,10 +1,9 @@
 @import "tailwindcss";
 
 /*
- * Palette Zuri + design Neumorphism (soft UI).
- * Principe : les éléments ont LA MÊME couleur que le fond ; le relief vient
- * d'une double ombre (claire en haut-gauche, sombre en bas-droite).
- * Relief sortant = ombres externes ; état actif/enfoncé = ombres internes (inset).
+ * Design minimaliste (contenu) : fond blanc, beaucoup d'espace,
+ * typographie mise en avant, une seule couleur d'accent (prune).
+ * La palette prune/or reste utilisée par la sidebar (Material + Organic).
  */
 @theme {
   --color-plum-950: #2e1327;
@@ -13,39 +12,44 @@
   --color-plum-700: #5e3253;
   --color-plum-600: #714465;
 
-  /* Surface unique du neumorphism côté contenu */
-  --color-cream-50: #faf5ec;
-  --color-cream-100: #f0e9dc;
-  --color-cream-200: #e0d5c2;
+  --color-cream-200: #e8ddd1;
 
   --color-gold-400: #c9a05e;
   --color-gold-500: #b98a44;
-  --color-gold-600: #9a7136;
 
-  --color-ink-900: #241b21;
-  --color-ink-600: #5f5359;
-  --color-ink-400: #8d8188;
+  /* Nuances neutres du contenu minimaliste */
+  --color-ink-900: #1d1d1f;
+  --color-ink-600: #6e6e73;
+  --color-ink-400: #a1a1a6;
+  --color-surface: #f5f5f7;
+  --color-hairline: #e8e8ed;
 
-  --color-success-700: #3d7a34;
+  --color-success-700: #2f7d32;
   --color-warning-700: #9a6b1f;
-  --color-danger-700: #a83a2c;
-
-  /* Ombres neumorphiques — surfaces crème */
-  --shadow-neu: 8px 8px 16px rgba(163, 148, 122, 0.45),
-    -8px -8px 16px rgba(255, 255, 255, 0.95);
-  --shadow-neu-sm: 4px 4px 8px rgba(163, 148, 122, 0.4),
-    -4px -4px 8px rgba(255, 255, 255, 0.9);
-  --shadow-neu-inset: inset 4px 4px 8px rgba(163, 148, 122, 0.45),
-    inset -4px -4px 8px rgba(255, 255, 255, 0.9);
-  --shadow-neu-inset-sm: inset 2px 2px 5px rgba(163, 148, 122, 0.45),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.9);
+  --color-danger-700: #c0392b;
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--color-cream-100);
+  background: #ffffff;
   color: var(--color-ink-900);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Entrée en fondu + glissement des invites de la barre de recherche */
+@keyframes hint-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-hint-in {
+  animation: hint-in 0.45s ease-out both;
 }

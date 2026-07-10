@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Card } from "@/components/ui/Card";
 
 export interface DataTableColumn<Row> {
   header: string;
@@ -15,17 +14,20 @@ interface DataTableProps<Row> {
   rowKey: (row: Row) => string;
 }
 
-/** Tableau neumorphique : conteneur en relief, séparations discrètes. */
+/**
+ * Tableau minimaliste : pas de conteneur marqué, en-têtes discrets
+ * en petites capitales, fines lignes de séparation, rangées aérées.
+ */
 export function DataTable<Row>({ columns, rows, rowKey }: DataTableProps<Row>) {
   return (
-    <Card className="overflow-x-auto p-2">
+    <div className="overflow-x-auto">
       <table className="w-full min-w-155 text-left">
         <thead>
-          <tr className="text-sm text-ink-600">
+          <tr className="text-xs uppercase tracking-wider text-ink-400">
             {columns.map((column) => (
               <th
                 key={column.header}
-                className={`px-6 py-4 font-medium ${column.align === "right" ? "text-right" : ""}`}
+                className={`px-4 py-3 font-medium ${column.align === "right" ? "text-right" : ""}`}
               >
                 {column.header}
               </th>
@@ -34,14 +36,11 @@ export function DataTable<Row>({ columns, rows, rowKey }: DataTableProps<Row>) {
         </thead>
         <tbody>
           {rows.map((row) => (
-            <tr
-              key={rowKey(row)}
-              className="border-t border-cream-200/70 text-[15px]"
-            >
+            <tr key={rowKey(row)} className="border-t border-hairline">
               {columns.map((column) => (
                 <td
                   key={column.header}
-                  className={`px-6 py-4 ${column.align === "right" ? "text-right" : ""}`}
+                  className={`px-4 py-5 text-[15px] ${column.align === "right" ? "text-right" : ""}`}
                 >
                   {column.cell(row)}
                 </td>
@@ -50,6 +49,6 @@ export function DataTable<Row>({ columns, rows, rowKey }: DataTableProps<Row>) {
           ))}
         </tbody>
       </table>
-    </Card>
+    </div>
   );
 }

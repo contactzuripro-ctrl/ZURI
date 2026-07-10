@@ -16,10 +16,10 @@ export default function ComptabilitePage() {
           </PrimaryButton>
         }
       />
-      <div className="space-y-8 p-8">
+      <div className="space-y-10 px-10 py-8">
         <FinanceSummaryCards />
         <section>
-          <h2 className="mb-4 text-lg font-bold">Dernières dépenses</h2>
+          <h2 className="mb-4 text-lg font-semibold tracking-tight">Dernières dépenses</h2>
           <ExpensesTable />
         </section>
       </div>

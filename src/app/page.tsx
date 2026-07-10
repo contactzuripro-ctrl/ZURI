@@ -7,7 +7,7 @@ export default function TableauDeBordPage() {
   return (
     <>
       <PageHeader title="Tableau de bord" />
-      <div className="space-y-8 p-8">
+      <div className="space-y-10 px-10 py-8">
         <DashboardSummaryCards />
         <UpcomingAppointments />
       </div>

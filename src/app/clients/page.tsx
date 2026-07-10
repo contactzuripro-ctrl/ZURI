@@ -15,7 +15,7 @@ export default function ClientsPage() {
           </PrimaryButton>
         }
       />
-      <div className="p-8">
+      <div className="px-10 py-8">
         <ClientsTable />
       </div>
     </>

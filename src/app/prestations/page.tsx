@@ -15,7 +15,7 @@ export default function PrestationsPage() {
           </PrimaryButton>
         }
       />
-      <div className="p-8">
+      <div className="px-10 py-8">
         <ServicesCatalog />
       </div>
     </>

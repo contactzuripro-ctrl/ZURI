@@ -14,7 +14,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
     <Card className="flex flex-col gap-3 p-6">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-gold-600">
+          <p className="text-xs font-medium uppercase tracking-wide text-ink-600">
             {service.category}
           </p>
           <h2 className="mt-1 text-lg font-bold">{service.name}</h2>

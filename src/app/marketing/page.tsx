@@ -16,10 +16,10 @@ export default function MarketingPage() {
           </PrimaryButton>
         }
       />
-      <div className="space-y-8 p-8">
+      <div className="space-y-10 px-10 py-8">
         <LoyaltySummaryCards />
         <section>
-          <h2 className="mb-4 text-lg font-bold">Campagnes</h2>
+          <h2 className="mb-4 text-lg font-semibold tracking-tight">Campagnes</h2>
           <CampaignsTable />
         </section>
       </div>

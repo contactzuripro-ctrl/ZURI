@@ -16,7 +16,7 @@ export default function PaiementsPage() {
           </PrimaryButton>
         }
       />
-      <div className="space-y-8 p-8">
+      <div className="space-y-10 px-10 py-8">
         <PaymentsSummaryCards />
         <PaymentsTable />
       </div>

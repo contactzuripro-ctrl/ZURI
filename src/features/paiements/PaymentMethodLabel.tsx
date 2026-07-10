@@ -7,7 +7,7 @@ const methodDisplay: Record<
 > = {
   "orange-money": {
     label: "Orange Money",
-    className: "text-gold-600",
+    className: "text-ink-600",
     Icon: Smartphone,
   },
   wave: { label: "Wave", className: "text-plum-700", Icon: Wallet },

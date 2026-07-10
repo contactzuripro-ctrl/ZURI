@@ -11,12 +11,13 @@ interface StatusBadgeProps {
   tone: BadgeTone;
 }
 
-/** Pastille de statut neumorphique : creusée (inset), texte coloré selon le ton. */
+/** Statut minimaliste : simple point coloré suivi du texte, sans fond. */
 export function StatusBadge({ label, tone }: StatusBadgeProps) {
   return (
     <span
-      className={`inline-block rounded-full bg-cream-100 px-3.5 py-1.5 text-sm font-semibold shadow-neu-inset-sm ${toneClasses[tone]}`}
+      className={`inline-flex items-center gap-2 text-sm font-medium ${toneClasses[tone]}`}
     >
+      <span className="size-1.5 rounded-full bg-current" />
       {label}
     </span>
   );

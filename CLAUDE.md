@@ -69,6 +69,9 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 
 | 2026-07-10 | Vrai calendrier Agenda | Remplace les simples colonnes par un calendrier complet : vue **Mois** (grille lun→dim, pastilles de RDV colorées par employée, « +n autres », jour courant surligné or, clic sur un jour → sa journée) et vue **Jour** (grille horaire 08:00–19:00, une colonne par employée, blocs positionnés selon l'horaire). Navigation ‹ › + « Aujourd'hui » + bascule Jour/Mois. Le type `Appointment` a maintenant un champ `date` | `src/features/agenda/` (`Calendar`, `CalendarHeader`, `MonthView`, `DayView`, `data.ts`), `src/lib/calendar.ts`, `src/types/index.ts` — supprime `DailyPlanning`, `AppointmentCard` |
 
+| 2026-07-10 | Refonte Minimalisme | Le contenu passe du Neumorphism au minimalisme façon Apple : fond blanc, cartes gris très clair sans ombre, badges = point coloré + texte, tableaux à fines lignes, typo mise en avant (grandes valeurs, libellés discrets), espacements élargis. Suppression des blobs (`OrganicBackdrop`) et formes « galet » du contenu. **Le menu garde son style Material + Organic** (validé par l'utilisateur) | `src/app/globals.css` (tokens neutres `surface`/`hairline`, suppression ombres neu), `src/components/ui/`, pages et features |
+| 2026-07-10 | Barre de recherche animée | Dans l'en-tête de chaque page : s'élargit au focus (w-56 → w-80, 300 ms) avec liseré prune, invites qui défilent en fondu toutes les 2,8 s tant que le champ est vide (« Rechercher une cliente… », etc.). Recherche non branchée (UI seule) | `src/components/layout/SearchBar.tsx`, `PageHeader.tsx`, keyframes dans `globals.css` |
+
 ### Notes techniques
 - Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
 - Les types métier partagés (Payment, Client, Appointment, Service, Employee, StockItem, Campaign…) sont dans `src/types/index.ts`.
