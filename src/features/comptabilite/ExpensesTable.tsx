@@ -16,7 +16,9 @@ const columns: DataTableColumn<ExpenseEntry>[] = [
   {
     header: "Montant",
     cell: (expense) => (
-      <span className="font-semibold">{formatAmount(expense.amount)}</span>
+      <span className="font-semibold whitespace-nowrap">
+        {formatAmount(expense.amount)}
+      </span>
     ),
     align: "right",
   },

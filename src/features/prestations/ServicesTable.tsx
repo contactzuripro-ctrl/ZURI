@@ -37,7 +37,9 @@ const columns: DataTableColumn<Service>[] = [
   {
     header: "Prix",
     cell: (service) => (
-      <span className="font-semibold">{formatAmount(service.price)}</span>
+      <span className="font-semibold whitespace-nowrap">
+        {formatAmount(service.price)}
+      </span>
     ),
   },
   {

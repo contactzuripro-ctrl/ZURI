@@ -15,7 +15,7 @@ interface StatusBadgeProps {
 export function StatusBadge({ label, tone }: StatusBadgeProps) {
   return (
     <span
-      className={`inline-flex items-center gap-2 text-sm font-medium ${toneClasses[tone]}`}
+      className={`inline-flex items-center gap-2 text-sm font-medium whitespace-nowrap ${toneClasses[tone]}`}
     >
       <span className="size-1.5 rounded-full bg-current" />
       {label}

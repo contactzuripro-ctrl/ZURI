@@ -53,7 +53,9 @@ export function EmployeePerformanceCard({
         <span className="text-ink-600">
           Commission ({formatPercent(employee.commissionRate)})
         </span>
-        <span className="font-semibold">{formatAmount(commission)}</span>
+        <span className="font-semibold whitespace-nowrap">
+          {formatAmount(commission)}
+        </span>
       </div>
     </Card>
   );

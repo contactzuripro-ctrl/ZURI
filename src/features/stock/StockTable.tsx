@@ -26,7 +26,9 @@ const columns: DataTableColumn<StockItem>[] = [
   },
   {
     header: "Prix unitaire",
-    cell: (item) => formatAmount(item.unitPrice),
+    cell: (item) => (
+      <span className="whitespace-nowrap">{formatAmount(item.unitPrice)}</span>
+    ),
     align: "right",
   },
   {

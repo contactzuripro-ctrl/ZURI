@@ -28,7 +28,9 @@ const columns: DataTableColumn<Payment>[] = [
   {
     header: "Montant",
     cell: (payment) => (
-      <span className="font-semibold">{formatAmount(payment.amount)}</span>
+      <span className="font-semibold whitespace-nowrap">
+        {formatAmount(payment.amount)}
+      </span>
     ),
   },
   {

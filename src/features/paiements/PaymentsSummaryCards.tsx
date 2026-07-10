@@ -5,7 +5,7 @@ import { paymentsSummary } from "@/features/paiements/data";
 /** Les trois indicateurs du haut de la page Paiements. */
 export function PaymentsSummaryCards() {
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
       <StatCard
         label="Encaissé aujourd'hui"
         value={formatAmount(paymentsSummary.collectedToday)}

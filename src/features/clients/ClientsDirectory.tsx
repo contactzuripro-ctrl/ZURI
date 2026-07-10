@@ -23,7 +23,7 @@ export function ClientsDirectory() {
     clientProfiles[0];
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[20rem_1fr]">
+    <div className="grid grid-cols-1 gap-6 xl:grid-cols-[20rem_1fr]">
       <ClientListPanel
         clients={filteredClients}
         selectedId={selectedClient.id}

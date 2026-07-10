@@ -5,7 +5,7 @@ import { monthlyFinance } from "@/features/comptabilite/data";
 /** Chiffre d'affaires, dépenses et bénéfice net du mois en cours. */
 export function FinanceSummaryCards() {
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
       <StatCard
         label="Chiffre d'affaires – juillet"
         value={formatAmount(monthlyFinance.revenue)}
