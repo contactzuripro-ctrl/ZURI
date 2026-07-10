@@ -48,3 +48,21 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 | Date | Feature | Description | Fichiers principaux |
 |------|---------|-------------|---------------------|
 | 2026-07-10 | Initialisation | Projet Next.js + TypeScript + Tailwind, structure de dossiers, conventions | `src/app/`, `CLAUDE.md` |
+| 2026-07-10 | Layout dashboard | Sidebar prune fixe (logo Zuri, 9 liens + Paramètres, lien actif surligné), en-tête de page, palette Zuri (prune/crème/or) dans Tailwind | `src/components/layout/` (`Sidebar`, `SidebarLink`, `navigation`, `PageHeader`), `src/app/globals.css`, `src/app/layout.tsx` |
+| 2026-07-10 | Composants UI | Carte, carte de statistique, badge de statut, tableau générique, bouton principal | `src/components/ui/` (`Card`, `StatCard`, `StatusBadge`, `DataTable`, `PrimaryButton`) |
+| 2026-07-10 | 01 Tableau de bord | Recette du jour, RDV du jour, nouvelles clientes, alertes stock + liste des prochains RDV | `src/app/page.tsx`, `src/features/tableau-de-bord/` |
+| 2026-07-10 | 02 Agenda | Planning du jour en colonnes par employée, cartes de RDV triées par heure | `src/app/agenda/`, `src/features/agenda/` |
+| 2026-07-10 | 03 Clients | Liste des clientes : téléphone, prestation favorite, visites, total dépensé, dernière visite | `src/app/clients/`, `src/features/clients/` |
+| 2026-07-10 | 04 Paiements | 3 indicateurs (encaissé, acomptes, transactions) + tableau des transactions Orange Money / Wave / Espèces avec statuts | `src/app/paiements/`, `src/features/paiements/` |
+| 2026-07-10 | 05 Comptabilité | CA, dépenses, bénéfice net du mois + dernières dépenses + bouton export | `src/app/comptabilite/`, `src/features/comptabilite/` |
+| 2026-07-10 | 06 Prestations | Catalogue en grille : catégorie, prix, durée, promotions | `src/app/prestations/`, `src/features/prestations/` |
+| 2026-07-10 | 07 Employés | Cartes par employée : objectif mensuel, barre de progression, commission calculée | `src/app/employes/`, `src/features/employes/` |
+| 2026-07-10 | 08 Stock | Inventaire avec seuils d'alerte et statuts En stock / À commander / Rupture | `src/app/stock/`, `src/features/stock/` |
+| 2026-07-10 | 09 Marketing | Indicateurs fidélité + tableau des campagnes SMS / WhatsApp (envois, taux de réponse) | `src/app/marketing/`, `src/features/marketing/` |
+| 2026-07-10 | Paramètres | Écran d'infos du salon (nom, devise, moyens de paiement) — à compléter | `src/app/parametres/` |
+
+### Notes techniques
+- Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
+- Les types métier partagés (Payment, Client, Appointment, Service, Employee, StockItem, Campaign…) sont dans `src/types/index.ts`.
+- Formatage des montants CFA / dates / pourcentages : `src/lib/format.ts`.
+- Icônes : `lucide-react`. Les icônes étant des fonctions, tout composant qui les reçoit en props doit être un composant client (`"use client"` sur `Sidebar`).
