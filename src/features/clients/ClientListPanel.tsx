@@ -3,7 +3,7 @@
 import { Search } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { formatDayMonth } from "@/lib/format";
-import { ClientAvatar } from "@/features/clients/ClientAvatar";
+import { Avatar } from "@/components/ui/Avatar";
 import type { ClientProfile } from "@/features/clients/data";
 
 interface ClientListPanelProps {
@@ -48,7 +48,7 @@ export function ClientListPanel({
                   isSelected ? "bg-accent-500/15" : "hover:bg-accent-500/5"
                 }`}
               >
-                <ClientAvatar
+                <Avatar
                   fullName={client.fullName}
                   color={client.avatarColor}
                   photoUrl={client.photoUrl}

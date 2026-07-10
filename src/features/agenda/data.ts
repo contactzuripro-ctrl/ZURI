@@ -10,6 +10,13 @@ export const employeeColors: Record<string, string> = {
   Chantal: "bg-success-700 text-white",
 };
 
+/** Photo de profil de chaque employée (dans /public). */
+export const employeePhotos: Record<string, string> = {
+  Awa: "/avatars/awa.jpg",
+  Binta: "/avatars/binta.jpg",
+  Chantal: "/avatars/chantal.jpg",
+};
+
 export const appointments: Appointment[] = [
   // Vendredi 10 juillet 2026 (journée chargée)
   {

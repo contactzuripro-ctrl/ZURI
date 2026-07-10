@@ -1,9 +1,14 @@
 "use client";
 
 import { Card } from "@/components/ui/Card";
+import { Avatar } from "@/components/ui/Avatar";
 import { timeToMinutes, toIsoDate } from "@/lib/calendar";
 import type { Appointment } from "@/types";
-import { employees, employeeColors } from "@/features/agenda/data";
+import {
+  employees,
+  employeeColors,
+  employeePhotos,
+} from "@/features/agenda/data";
 
 /** Plage horaire affichée : 08:00 → 19:00. */
 const DAY_START_MINUTES = 8 * 60;
@@ -50,11 +55,12 @@ export function DayView({ date, appointments }: DayViewProps) {
             key={employeeName}
             className="flex items-center justify-center gap-2 pb-4 font-bold"
           >
-            <span
-              className={`flex size-8 items-center justify-center rounded-[55%_45%_62%_38%/48%_60%_40%_52%] text-sm font-semibold ${employeeColors[employeeName]}`}
-            >
-              {employeeName.charAt(0)}
-            </span>
+            <Avatar
+              fullName={employeeName}
+              photoUrl={employeePhotos[employeeName]}
+              color={employeeColors[employeeName]}
+              sizeClass="size-8 text-sm"
+            />
             {employeeName}
           </div>
         ))}

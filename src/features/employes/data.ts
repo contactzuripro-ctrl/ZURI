@@ -5,6 +5,7 @@ export const employees: Employee[] = [
   {
     id: "emp-1",
     fullName: "Awa Traoré",
+    photoUrl: "/avatars/awa.jpg",
     role: "Coiffeuse senior",
     monthlyTarget: 500000,
     monthlyRevenue: 420000,
@@ -13,6 +14,7 @@ export const employees: Employee[] = [
   {
     id: "emp-2",
     fullName: "Binta Camara",
+    photoUrl: "/avatars/binta.jpg",
     role: "Coiffeuse",
     monthlyTarget: 400000,
     monthlyRevenue: 385000,
@@ -21,6 +23,7 @@ export const employees: Employee[] = [
   {
     id: "emp-3",
     fullName: "Chantal Aka",
+    photoUrl: "/avatars/chantal.jpg",
     role: "Onglerie & soins",
     monthlyTarget: 300000,
     monthlyRevenue: 310000,

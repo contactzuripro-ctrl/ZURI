@@ -12,6 +12,7 @@ export const upcomingAppointments: Appointment[] = [
   {
     id: "apt-1",
     clientName: "Aminata Koné",
+    clientPhotoUrl: "/avatars/aminata.jpg",
     serviceName: "Tresses collées",
     employeeName: "Awa",
     date: "2026-07-10",
@@ -21,6 +22,7 @@ export const upcomingAppointments: Appointment[] = [
   {
     id: "apt-2",
     clientName: "Grace N'Guessan",
+    clientPhotoUrl: "/avatars/grace.jpg",
     serviceName: "Défrisage + soin",
     employeeName: "Binta",
     date: "2026-07-10",
@@ -30,6 +32,7 @@ export const upcomingAppointments: Appointment[] = [
   {
     id: "apt-3",
     clientName: "Rokia Cissé",
+    clientPhotoUrl: "/avatars/rokia.jpg",
     serviceName: "Pose vernis semi-permanent",
     employeeName: "Chantal",
     date: "2026-07-10",
@@ -39,6 +42,7 @@ export const upcomingAppointments: Appointment[] = [
   {
     id: "apt-4",
     clientName: "Djeneba Sylla",
+    clientPhotoUrl: "/avatars/djeneba.jpg",
     serviceName: "Coupe et brushing",
     employeeName: "Awa",
     date: "2026-07-10",

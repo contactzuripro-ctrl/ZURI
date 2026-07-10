@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/Card";
+import { Avatar } from "@/components/ui/Avatar";
 import { formatAmount, formatPercent } from "@/lib/format";
 import type { Employee } from "@/types";
 
@@ -20,10 +21,19 @@ export function EmployeePerformanceCard({
 
   return (
     <Card className="p-8">
-      <h2 className="text-lg font-semibold tracking-tight">
-        {employee.fullName}
-      </h2>
-      <p className="text-sm text-ink-600">{employee.role}</p>
+      <div className="flex items-center gap-4">
+        <Avatar
+          fullName={employee.fullName}
+          photoUrl={employee.photoUrl}
+          sizeClass="size-14"
+        />
+        <div>
+          <h2 className="text-lg font-semibold tracking-tight">
+            {employee.fullName}
+          </h2>
+          <p className="text-sm text-ink-600">{employee.role}</p>
+        </div>
+      </div>
 
       <p className="mt-6 text-3xl font-semibold tracking-tight">
         {formatAmount(employee.monthlyRevenue)}

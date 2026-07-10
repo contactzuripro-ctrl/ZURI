@@ -16,6 +16,8 @@ export interface Payment {
 export interface Appointment {
   id: string;
   clientName: string;
+  /** Photo de profil de la cliente dans /public (optionnelle). */
+  clientPhotoUrl?: string;
   serviceName: string;
   employeeName: string;
   date: string; // date ISO "YYYY-MM-DD"
@@ -45,6 +47,8 @@ export interface Service {
 export interface Employee {
   id: string;
   fullName: string;
+  /** Photo de profil dans /public (optionnelle). */
+  photoUrl?: string;
   role: string;
   monthlyTarget: number;
   monthlyRevenue: number;

@@ -1,8 +1,9 @@
 import Image from "next/image";
 
-interface ClientAvatarProps {
+interface AvatarProps {
   fullName: string;
-  color: string;
+  /** Couleur Tailwind du fond des initiales (repli sans photo). */
+  color?: string;
   /** Photo de profil (dans /public) ; à défaut, initiales sur fond coloré. */
   photoUrl?: string;
   /** Taille Tailwind, ex. "size-10" (liste) ou "size-16" (fiche). */
@@ -20,12 +21,12 @@ function initialsOf(fullName: string): string {
 }
 
 /** Avatar de la cliente en forme de galet : photo, ou initiales en repli. */
-export function ClientAvatar({
+export function Avatar({
   fullName,
-  color,
+  color = "bg-plum-800",
   photoUrl,
   sizeClass = "size-10",
-}: ClientAvatarProps) {
+}: AvatarProps) {
   const pebbleShape = "rounded-[55%_45%_62%_38%/48%_60%_40%_52%]";
 
   if (photoUrl) {

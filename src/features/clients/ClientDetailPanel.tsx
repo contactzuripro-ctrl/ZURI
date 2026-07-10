@@ -3,7 +3,7 @@
 import { Plus } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { formatDayMonth, formatMonthYear } from "@/lib/format";
-import { ClientAvatar } from "@/features/clients/ClientAvatar";
+import { Avatar } from "@/components/ui/Avatar";
 import type { ClientProfile } from "@/features/clients/data";
 
 /** Sous-carte blanche de la fiche (historique, notes, photos). */
@@ -40,7 +40,7 @@ export function ClientDetailPanel({ client }: ClientDetailPanelProps) {
     <Card className="p-8">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="flex items-center gap-5">
-          <ClientAvatar
+          <Avatar
             fullName={client.fullName}
             color={client.avatarColor}
             photoUrl={client.photoUrl}

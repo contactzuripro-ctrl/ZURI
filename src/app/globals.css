@@ -97,12 +97,18 @@ body {
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    /* `none` (et pas translateY(0)) : un transform résiduel créerait un
+       contexte d'empilement qui piégerait le z-index du menu de recherche
+       sous les blocs de contenu. */
+    transform: none;
   }
 }
 
 .animate-page-in > header {
   animation: fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* L'en-tête (et son menu de recherche) doit passer au-dessus du contenu */
+  position: relative;
+  z-index: 40;
 }
 
 .animate-page-in > div > * {
