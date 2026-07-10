@@ -38,18 +38,27 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
 
-/* Entrée en fondu + glissement des invites de la barre de recherche */
-@keyframes hint-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.5rem);
-  }
-  to {
+/* Curseur clignotant de l'effet machine à écrire (barre de recherche) */
+@keyframes cursor-blink {
+  0%,
+  45% {
     opacity: 1;
-    transform: translateY(0);
+  }
+  50%,
+  95% {
+    opacity: 0;
   }
 }
 
-@utility animate-hint-in {
-  animation: hint-in 0.45s ease-out both;
+@utility animate-cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* Anneau en dégradé statique de la barre de recherche (halo au focus seulement) */
+@utility search-ring {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-plum-800),
+    var(--color-gold-500)
+  );
 }

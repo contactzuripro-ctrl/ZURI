@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 
-/** Suggestions qui défilent dans le champ tant qu'il est vide. */
+/** Invites tapées à la machine dans le champ tant qu'il est vide. */
 const PLACEHOLDER_HINTS = [
   "Rechercher une cliente…",
   "Rechercher une prestation…",
@@ -11,47 +11,83 @@ const PLACEHOLDER_HINTS = [
   "Rechercher un produit…",
 ];
 
-const HINT_ROTATION_MS = 2800;
+/** Vitesses de l'effet machine à écrire (en ms). */
+const TYPING_MS = 65;
+const DELETING_MS = 30;
+const PAUSE_FULL_TEXT_MS = 1800;
+const PAUSE_BEFORE_NEXT_MS = 450;
 
 /**
- * Barre de recherche minimaliste animée : s'élargit en douceur au focus,
- * et son texte d'invite défile verticalement tant que le champ est vide.
+ * Fait défiler les invites avec un effet machine à écrire :
+ * tape lettre par lettre, marque une pause, efface, passe à la suivante.
+ */
+function useTypewriter(hints: string[]): string {
+  const [typedText, setTypedText] = useState("");
+
+  useEffect(() => {
+    let hintIndex = 0;
+    let charCount = 0;
+    let isDeleting = false;
+    let timer: ReturnType<typeof setTimeout>;
+
+    const tick = () => {
+      const hint = hints[hintIndex];
+      charCount += isDeleting ? -1 : 1;
+      setTypedText(hint.slice(0, charCount));
+
+      if (!isDeleting && charCount === hint.length) {
+        isDeleting = true;
+        timer = setTimeout(tick, PAUSE_FULL_TEXT_MS);
+      } else if (isDeleting && charCount === 0) {
+        isDeleting = false;
+        hintIndex = (hintIndex + 1) % hints.length;
+        timer = setTimeout(tick, PAUSE_BEFORE_NEXT_MS);
+      } else {
+        timer = setTimeout(tick, isDeleting ? DELETING_MS : TYPING_MS);
+      }
+    };
+
+    timer = setTimeout(tick, TYPING_MS);
+    return () => clearTimeout(timer);
+  }, [hints]);
+
+  return typedText;
+}
+
+/**
+ * Barre de recherche : fin anneau en dégradé prune→or, icône en pastille
+ * dorée, halo doré et élargissement au focus, invite tapée à la machine
+ * avec curseur clignotant tant que le champ est vide.
  */
 export function SearchBar() {
   const [query, setQuery] = useState("");
-  const [hintIndex, setHintIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(
-      () => setHintIndex((index) => (index + 1) % PLACEHOLDER_HINTS.length),
-      HINT_ROTATION_MS,
-    );
-    return () => clearInterval(timer);
-  }, []);
+  const typedHint = useTypewriter(PLACEHOLDER_HINTS);
 
   return (
-    <label className="group relative flex w-56 items-center gap-2.5 rounded-full bg-surface px-4 py-2.5 transition-all duration-300 ease-out focus-within:w-80 focus-within:bg-white focus-within:shadow-[0_0_0_1.5px_var(--color-plum-800),0_8px_24px_rgba(29,29,31,0.08)]">
-      <Search
-        size={17}
-        strokeWidth={2}
-        className="shrink-0 text-ink-400 transition-colors group-focus-within:text-plum-800"
-      />
-      <input
-        type="search"
-        value={query}
-        onChange={(event) => setQuery(event.target.value)}
-        aria-label="Rechercher"
-        className="w-full bg-transparent text-sm text-ink-900 outline-none"
-      />
-      {query === "" && (
-        <span
-          key={hintIndex}
-          aria-hidden
-          className="pointer-events-none absolute left-11 animate-hint-in text-sm text-ink-400"
-        >
-          {PLACEHOLDER_HINTS[hintIndex]}
+    <div className="search-ring rounded-full p-[2px] transition-shadow duration-300 focus-within:shadow-[0_0_18px_rgba(185,138,68,0.4)]">
+      <label className="group relative flex w-64 items-center gap-3 rounded-full bg-white px-1.5 py-1.5 transition-all duration-300 ease-out focus-within:w-96">
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gold-500 text-white">
+          <Search size={16} strokeWidth={2.2} />
         </span>
-      )}
-    </label>
+        <input
+          type="search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          aria-label="Rechercher"
+          className="w-full bg-transparent pr-4 text-sm text-ink-900 outline-none"
+        />
+        {query === "" && (
+          <span
+            aria-hidden
+            className="pointer-events-none absolute left-12 text-sm text-ink-400"
+          >
+            {typedHint}
+            <span className="animate-cursor-blink ml-0.5 font-medium text-gold-500">
+              |
+            </span>
+          </span>
+        )}
+      </label>
+    </div>
   );
 }
