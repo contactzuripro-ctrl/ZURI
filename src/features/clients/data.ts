@@ -11,8 +11,8 @@ export interface ClientProfile extends Client {
   avatarColor: string;
   serviceHistory: { serviceName: string; date: string }[];
   privateNotes: string;
-  /** Couleurs des vignettes photos avant/après (démo, en attendant l'upload). */
-  photoColors: string[];
+  /** Photos des prestations réalisées (coiffures), dans /public/prestations. */
+  servicePhotoUrls: string[];
 }
 
 /** Données de démonstration — à remplacer par l'API réelle. */
@@ -36,7 +36,11 @@ export const clientProfiles: ClientProfile[] = [
     ],
     privateNotes:
       "Préfère les rendez-vous en matinée. Allergie aux produits ammoniaqués – utiliser la gamme sans ammoniaque.",
-    photoColors: ["bg-accent-400/30", "bg-cream-200/60", "bg-accent-500/35"],
+    servicePhotoUrls: [
+      "/prestations/tresses-box-braids-1.jpg",
+      "/prestations/tresses-box-braids-2.jpg",
+      "/prestations/chignon-tresses.jpg",
+    ],
   },
   {
     id: "cli-2",
@@ -55,7 +59,10 @@ export const clientProfiles: ClientProfile[] = [
       { serviceName: "Coloration", date: "2026-05-30" },
     ],
     privateNotes: "Aime discuter des nouvelles tendances. Café sans sucre.",
-    photoColors: ["bg-accent-500/25", "bg-plum-600/15"],
+    servicePhotoUrls: [
+      "/prestations/tresses-colorees.jpg",
+      "/prestations/tresses-coquillages.jpg",
+    ],
   },
   {
     id: "cli-3",
@@ -76,7 +83,11 @@ export const clientProfiles: ClientProfile[] = [
     ],
     privateNotes:
       "Cuir chevelu sensible : espacer les colorations d'au moins 6 semaines.",
-    photoColors: ["bg-accent-400/40", "bg-cream-200/70", "bg-plum-600/20"],
+    servicePhotoUrls: [
+      "/prestations/bantu-knots.jpg",
+      "/prestations/tresses-et-bantu.jpg",
+      "/prestations/tresses-collees.jpg",
+    ],
   },
   {
     id: "cli-4",
@@ -95,6 +106,6 @@ export const clientProfiles: ClientProfile[] = [
       { serviceName: "Pose vernis semi-permanent", date: "2026-05-28" },
     ],
     privateNotes: "Nouvelle cliente venue via la campagne WhatsApp de mai.",
-    photoColors: ["bg-accent-500/30"],
+    servicePhotoUrls: ["/prestations/bantu-knots-profil.jpg"],
   },
 ];

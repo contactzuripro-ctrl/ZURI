@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Plus } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { formatDayMonth, formatMonthYear } from "@/lib/format";
@@ -33,7 +34,7 @@ interface ClientDetailPanelProps {
 /**
  * Panneau droit : fiche de la cliente sélectionnée — en-tête (avatar, nom,
  * ancienneté, badge fidèle), historique des prestations, notes privées
- * et photos avant/après.
+ * et photos des prestations réalisées.
  */
 export function ClientDetailPanel({ client }: ClientDetailPanelProps) {
   return (
@@ -87,14 +88,21 @@ export function ClientDetailPanel({ client }: ClientDetailPanelProps) {
         </DetailCard>
       </div>
 
-      <DetailCard title="Photos avant / après" className="mt-6">
+      <DetailCard title="Prestations réalisées" className="mt-6">
         <div className="mt-4 flex flex-wrap gap-4">
-          {client.photoColors.map((color, index) => (
+          {client.servicePhotoUrls.map((photoUrl, index) => (
             <div
-              key={index}
-              className={`size-28 rounded-2xl ${color}`}
-              aria-label={`Photo ${index + 1}`}
-            />
+              key={photoUrl}
+              className="relative size-28 overflow-hidden rounded-2xl"
+            >
+              <Image
+                src={photoUrl}
+                alt={`Prestation réalisée ${index + 1} pour ${client.fullName}`}
+                fill
+                sizes="112px"
+                className="object-cover"
+              />
+            </div>
           ))}
           <button
             type="button"
