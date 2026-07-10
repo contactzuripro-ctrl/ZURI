@@ -11,6 +11,8 @@ interface CalendarHeaderProps {
   onNext: () => void;
   onToday: () => void;
   onViewChange: (view: CalendarView) => void;
+  /** Contrôles additionnels (ex. filtre par employée), affichés avant la bascule Jour/Mois. */
+  children?: React.ReactNode;
 }
 
 /** Bouton rond discret de navigation (mois/jour précédent ou suivant). */
@@ -46,6 +48,7 @@ export function CalendarHeader({
   onNext,
   onToday,
   onViewChange,
+  children,
 }: CalendarHeaderProps) {
   return (
     <div className="flex flex-wrap items-center justify-between gap-4">
@@ -68,21 +71,25 @@ export function CalendarHeader({
         </h2>
       </div>
 
-      <div className="flex gap-0.5 rounded-full bg-surface p-1">
-        {(["jour", "mois"] as const).map((viewOption) => (
-          <button
-            key={viewOption}
-            type="button"
-            onClick={() => onViewChange(viewOption)}
-            className={`rounded-full px-4 py-1.5 text-sm font-medium capitalize transition-colors ${
-              view === viewOption
-                ? "bg-elevated text-ink-900 shadow-sm"
-                : "text-ink-600 hover:text-ink-900"
-            }`}
-          >
-            {viewOption}
-          </button>
-        ))}
+      <div className="flex flex-wrap items-center gap-4">
+        {children}
+
+        <div className="flex gap-0.5 rounded-full bg-surface p-1">
+          {(["jour", "mois"] as const).map((viewOption) => (
+            <button
+              key={viewOption}
+              type="button"
+              onClick={() => onViewChange(viewOption)}
+              className={`rounded-full px-4 py-1.5 text-sm font-medium capitalize transition-colors ${
+                view === viewOption
+                  ? "bg-elevated text-ink-900 shadow-sm"
+                  : "text-ink-600 hover:text-ink-900"
+              }`}
+            >
+              {viewOption}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -10,6 +10,13 @@ export const employeeColors: Record<string, string> = {
   Chantal: "bg-success-700 text-white",
 };
 
+/** Couleur d'anneau de la pastille sélectionnée dans le filtre par employée. */
+export const employeeRingColors: Record<string, string> = {
+  Awa: "ring-accent-500",
+  Binta: "ring-plum-700",
+  Chantal: "ring-success-700",
+};
+
 /** Photo de profil de chaque employée (dans /public). */
 export const employeePhotos: Record<string, string> = {
   Awa: "/avatars/awa.jpg",

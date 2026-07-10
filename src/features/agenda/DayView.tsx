@@ -33,24 +33,32 @@ function appointmentPosition(appointment: Appointment) {
 interface DayViewProps {
   date: Date;
   appointments: Appointment[];
+  /** Colonnes affichées (filtre par employée) ; toutes par défaut. */
+  visibleEmployees?: readonly string[];
 }
 
 /**
- * Vue Jour : grille horaire (08:00–19:00) avec une colonne par employée,
- * les rendez-vous sont positionnés et dimensionnés selon leur horaire.
+ * Vue Jour : grille horaire (08:00–19:00) avec une colonne par employée
+ * affichée, les rendez-vous sont positionnés et dimensionnés selon leur
+ * horaire.
  */
-export function DayView({ date, appointments }: DayViewProps) {
+export function DayView({
+  date,
+  appointments,
+  visibleEmployees = employees,
+}: DayViewProps) {
   const dayAppointments = appointments.filter(
     (appointment) => appointment.date === toIsoDate(date),
   );
   const gridHeight = `${(hourLabels.length - 1) * HOUR_HEIGHT_REM}rem`;
+  const gridTemplateColumns = `4rem repeat(${visibleEmployees.length}, minmax(0, 1fr))`;
 
   return (
     <Card className="overflow-x-auto p-6">
       {/* En-têtes des colonnes employées */}
-      <div className="grid min-w-160 grid-cols-[4rem_repeat(3,1fr)] gap-3">
+      <div className="grid min-w-160 gap-3" style={{ gridTemplateColumns }}>
         <div />
-        {employees.map((employeeName) => (
+        {visibleEmployees.map((employeeName) => (
           <div
             key={employeeName}
             className="flex items-center justify-center gap-2 pb-4 font-bold"
@@ -67,8 +75,8 @@ export function DayView({ date, appointments }: DayViewProps) {
       </div>
 
       <div
-        className="relative grid min-w-160 grid-cols-[4rem_repeat(3,1fr)] gap-3"
-        style={{ height: gridHeight }}
+        className="relative grid min-w-160 gap-3"
+        style={{ height: gridHeight, gridTemplateColumns }}
       >
         {/* Colonne des heures + lignes horizontales */}
         <div className="relative">
@@ -83,7 +91,7 @@ export function DayView({ date, appointments }: DayViewProps) {
           ))}
         </div>
 
-        {employees.map((employeeName) => (
+        {visibleEmployees.map((employeeName) => (
           <div
             key={employeeName}
             className="relative rounded-xl bg-elevated"

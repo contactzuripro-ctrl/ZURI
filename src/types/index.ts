@@ -7,6 +7,8 @@ export type PaymentStatus = "paye" | "en-attente";
 export interface Payment {
   id: string;
   clientName: string;
+  /** Photo de profil de la cliente dans /public (optionnelle). */
+  clientPhotoUrl?: string;
   serviceName: string;
   method: PaymentMethod;
   amount: number;
