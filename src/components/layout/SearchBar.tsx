@@ -133,7 +133,7 @@ export function SearchBar() {
       </div>
 
       {isOpen && (
-        <div className="animate-dropdown-in absolute top-full right-0 z-50 mt-3 w-72 rounded-2xl border border-hairline bg-elevated p-2 shadow-xl">
+        <div className="animate-dropdown-in absolute top-full right-0 z-50 mt-3 w-72 rounded-[1.8rem_1.2rem_1.8rem_1.2rem/1.2rem_1.8rem_1.2rem_1.8rem] border border-hairline bg-elevated p-2 shadow-xl">
           <p className="px-3 pt-2 pb-1 text-xs font-medium uppercase tracking-wider text-ink-400">
             Pages
           </p>

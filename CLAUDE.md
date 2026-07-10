@@ -80,6 +80,8 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 
 | 2026-07-10 | Menu déroulant de la recherche | Au focus sur la barre de recherche, un panneau s'ouvre en dessous listant les pages du menu (icône + nom) ; la saisie filtre la liste, cliquer navigue et referme. Animation d'ouverture : fondu + glissement + zoom du panneau (220 ms) et apparition en cascade des éléments (35 ms de décalage chacun). Fermeture au clic extérieur (hook `useCloseOnOutsideClick`) et à Échap. Vérifié au navigateur (Playwright) : ouverture, filtre « sto » → Stock, navigation OK | `src/components/layout/SearchBar.tsx` (réutilise `navigation.ts`), keyframes `dropdown-in`/`dropdown-item-in` dans `globals.css` |
 
+| 2026-07-10 | Retour de l'Organic Design (contenu) | L'Organic Design revient **en plus** du minimalisme (il avait été retiré par erreur lors de la refonte) : cartes, boutons d'action, bouton de menu, panneau de recherche, avatars et blocs de RDV du calendrier en coins asymétriques « galet » ; 3 blobs rose/prune très discrets derrière le contenu (`OrganicBackdrop`, compatible mode nuit). Le style du contenu est donc : Minimalisme + touches organiques | `src/components/ui/` (`Card`, `PrimaryButton`), `src/components/layout/` (`OrganicBackdrop`, `SidebarToggle`, `SearchBar`), `src/features/agenda/DayView.tsx`, `src/app/layout.tsx` |
+
 ### Notes techniques
 - Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
 - Les types métier partagés (Payment, Client, Appointment, Service, Employee, StockItem, Campaign…) sont dans `src/types/index.ts`.

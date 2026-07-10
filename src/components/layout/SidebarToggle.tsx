@@ -12,7 +12,7 @@ export function SidebarToggle() {
       type="button"
       onClick={toggle}
       aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-      className="flex size-10 items-center justify-center rounded-full text-ink-600 transition-colors hover:bg-surface hover:text-ink-900"
+      className="flex size-10 items-center justify-center rounded-[55%_45%_62%_38%/48%_60%_40%_52%] text-ink-600 transition-colors hover:bg-surface hover:text-ink-900"
     >
       {isOpen ? (
         <PanelLeftClose size={20} strokeWidth={1.8} />

@@ -51,7 +51,7 @@ export function DayView({ date, appointments }: DayViewProps) {
             className="flex items-center justify-center gap-2 pb-4 font-bold"
           >
             <span
-              className={`flex size-8 items-center justify-center rounded-full text-sm font-semibold ${employeeColors[employeeName]}`}
+              className={`flex size-8 items-center justify-center rounded-[55%_45%_62%_38%/48%_60%_40%_52%] text-sm font-semibold ${employeeColors[employeeName]}`}
             >
               {employeeName.charAt(0)}
             </span>
@@ -99,7 +99,7 @@ export function DayView({ date, appointments }: DayViewProps) {
               .map((appointment) => (
                 <div
                   key={appointment.id}
-                  className={`absolute inset-x-1.5 overflow-hidden rounded-2xl p-2.5 shadow-md ${employeeColors[employeeName]}`}
+                  className={`absolute inset-x-1.5 overflow-hidden rounded-[1.2rem_0.8rem_1.2rem_0.8rem/0.8rem_1.2rem_0.8rem_1.2rem] p-2.5 shadow-md ${employeeColors[employeeName]}`}
                   style={appointmentPosition(appointment)}
                 >
                   <p className="text-xs font-semibold">
