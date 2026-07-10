@@ -86,6 +86,8 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 
 | 2026-07-10 | Menu en verre | La sidebar devient une vitre prune translucide : `bg-plum-900/45` + `backdrop-blur-2xl`, bords lumineux (bordure droite blanche 25 % + reflets intérieurs haut/droite), bord droit arrondi conservé. Des halos rose/prune floutés (`blur-3xl`) sur fond `plum-950` sont fixés **derrière** la vitre (dans le composant, en `-z-10`) et suivent l'ouverture/fermeture du menu. Garde le Material + Organic (pilule rose optimiste, formes galet, blobs) | `src/components/layout/Sidebar.tsx` |
 
+| 2026-07-10 | Animation de changement de page | À chaque navigation, le contenu de la nouvelle page entre en fondu + glissement vers le haut + zoom léger (400 ms, easing doux). Implémenté via `src/app/template.tsx` (remonté par Next.js à chaque route, contrairement au layout) + keyframes `page-in`. Vérifié au navigateur : l'animation rejoue bien à chaque clic de menu | `src/app/template.tsx`, `globals.css` |
+
 ### Notes techniques
 - Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
 - Les types métier partagés (Payment, Client, Appointment, Service, Employee, StockItem, Campaign…) sont dans `src/types/index.ts`.

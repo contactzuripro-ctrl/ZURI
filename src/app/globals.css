@@ -87,6 +87,22 @@ body {
     0 14px 44px var(--glass-shadow);
 }
 
+/* Entrée de page à chaque navigation : fondu + glissement + zoom léger */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@utility animate-page-in {
+  animation: page-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* Curseur clignotant de l'effet machine à écrire (barre de recherche) */
 @keyframes cursor-blink {
   0%,
