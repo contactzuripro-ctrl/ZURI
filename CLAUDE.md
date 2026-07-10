@@ -67,6 +67,8 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 
 | 2026-07-10 | Organic Design du contenu | Touche organique sur le contenu (en plus du neumorphism) : cartes, boutons, bouton de menu, cartes RDV et avatars en coins asymétriques « galet » ; 3 blobs or/prune très discrets fixés derrière le contenu (`OrganicBackdrop`) | `src/components/ui/` (`Card`, `PrimaryButton`), `src/components/layout/` (`OrganicBackdrop`, `SidebarToggle`), features agenda/employés |
 
+| 2026-07-10 | Vrai calendrier Agenda | Remplace les simples colonnes par un calendrier complet : vue **Mois** (grille lun→dim, pastilles de RDV colorées par employée, « +n autres », jour courant surligné or, clic sur un jour → sa journée) et vue **Jour** (grille horaire 08:00–19:00, une colonne par employée, blocs positionnés selon l'horaire). Navigation ‹ › + « Aujourd'hui » + bascule Jour/Mois. Le type `Appointment` a maintenant un champ `date` | `src/features/agenda/` (`Calendar`, `CalendarHeader`, `MonthView`, `DayView`, `data.ts`), `src/lib/calendar.ts`, `src/types/index.ts` — supprime `DailyPlanning`, `AppointmentCard` |
+
 ### Notes techniques
 - Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
 - Les types métier partagés (Payment, Client, Appointment, Service, Employee, StockItem, Campaign…) sont dans `src/types/index.ts`.

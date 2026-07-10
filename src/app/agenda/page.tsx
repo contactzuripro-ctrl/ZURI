@@ -1,9 +1,9 @@
 import { Plus } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { PrimaryButton } from "@/components/ui/PrimaryButton";
-import { DailyPlanning } from "@/features/agenda/DailyPlanning";
+import { Calendar } from "@/features/agenda/Calendar";
 
-/** Agenda — planning du jour en colonnes par employée. */
+/** Agenda — vrai calendrier : vue Mois et vue Jour par employée. */
 export default function AgendaPage() {
   return (
     <>
@@ -16,7 +16,7 @@ export default function AgendaPage() {
         }
       />
       <div className="p-8">
-        <DailyPlanning />
+        <Calendar />
       </div>
     </>
   );

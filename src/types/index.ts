@@ -18,6 +18,7 @@ export interface Appointment {
   clientName: string;
   serviceName: string;
   employeeName: string;
+  date: string; // date ISO "YYYY-MM-DD"
   startTime: string; // format "HH:mm"
   endTime: string; // format "HH:mm"
 }
