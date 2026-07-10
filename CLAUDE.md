@@ -76,6 +76,8 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 
 | 2026-07-10 | Accent rose poudré | Le doré est remplacé par du rose poudré (#E39BB1) partout : pilule active du menu, logo, pastille et curseur de la barre de recherche, dégradé de l'anneau, couleur d'Awa dans le calendrier. Le token est renommé `accent-400/500` : pour changer de couleur d'accent, ne modifier que ces 2 variables dans `globals.css` | `src/app/globals.css`, `Sidebar`, `SidebarLink`, `SearchBar`, `features/agenda/data.ts` |
 
+| 2026-07-10 | États rose du menu | Les liens du menu réagissent en rose : survol = voile rose 25 % + texte rose, appui = rose 50 %, et **le lien cliqué devient la pilule rose pleine immédiatement** (sélection optimiste dans `Sidebar` : état `clickedHref` prioritaire sur `usePathname` jusqu'à ce que l'URL confirme) | `src/components/layout/Sidebar.tsx`, `SidebarLink.tsx`, `ThemeToggle.tsx` |
+
 ### Notes techniques
 - Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
 - Les types métier partagés (Payment, Client, Appointment, Service, Employee, StockItem, Campaign…) sont dans `src/types/index.ts`.

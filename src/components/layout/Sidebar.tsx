@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { SidebarLink } from "@/components/layout/SidebarLink";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { useSidebar } from "@/components/layout/SidebarContext";
@@ -9,12 +11,22 @@ import {
 } from "@/components/layout/navigation";
 
 /**
- * Sidebar Material + Organic Design : surface prune unie avec élévation,
- * bord droit très arrondi, logo en forme de blob irrégulier et formes
- * organiques discrètes en fond pour l'aspect naturel.
+ * Sidebar Material + Organic : surface prune unie avec élévation,
+ * bord droit très arrondi, logo blob et blobs décoratifs en fond.
+ * Le lien cliqué passe en rose immédiatement (sélection optimiste),
+ * puis l'URL confirme la sélection une fois la navigation faite.
  */
 export function Sidebar() {
   const { isOpen } = useSidebar();
+  const pathname = usePathname();
+  const [clickedHref, setClickedHref] = useState<string | null>(null);
+
+  // La navigation a rejoint le clic : l'URL redevient la source de vérité.
+  if (clickedHref !== null && clickedHref === pathname) {
+    setClickedHref(null);
+  }
+
+  const selectedHref = clickedHref ?? pathname;
 
   return (
     <aside
@@ -41,13 +53,22 @@ export function Sidebar() {
 
       <nav className="relative flex flex-1 flex-col gap-1.5">
         {mainNavItems.map((item) => (
-          <SidebarLink key={item.href} item={item} />
+          <SidebarLink
+            key={item.href}
+            item={item}
+            isActive={selectedHref === item.href}
+            onSelect={setClickedHref}
+          />
         ))}
       </nav>
 
       <div className="relative flex flex-col gap-1.5 border-t border-white/10 pt-3">
         <ThemeToggle />
-        <SidebarLink item={settingsNavItem} />
+        <SidebarLink
+          item={settingsNavItem}
+          isActive={selectedHref === settingsNavItem.href}
+          onSelect={setClickedHref}
+        />
       </div>
     </aside>
   );
