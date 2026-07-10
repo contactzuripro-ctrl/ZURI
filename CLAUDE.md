@@ -84,6 +84,8 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 
 | 2026-07-10 | Cartes en verre (glassmorphism) | Les box du dashboard perdent leur gris : fond très translucide (`--glass-bg` à 16 %), flou d'arrière-plan `backdrop-blur(32px) saturate(200%)`, **reflet diagonal** sur la vitre (dégradé 135°), bords lumineux (bordure blanche 95 % + double reflet intérieur), ombre portée profonde. Utilitaire `glass` dans `globals.css`, variables adaptées au mode nuit. Les bulles d'arrière-plan sont elles-mêmes floutées (`blur-3xl`, opacités 15-30 %) — nappes douces qui alimentent la transparence sans être voyantes. Intensité validée par l'utilisateur après 2 itérations | `src/app/globals.css` (utilitaire `glass` + variables `--glass-*`), `src/components/ui/Card.tsx`, `OrganicBackdrop.tsx` |
 
+| 2026-07-10 | Menu en verre | La sidebar devient une vitre prune translucide : `bg-plum-900/45` + `backdrop-blur-2xl`, bords lumineux (bordure droite blanche 25 % + reflets intérieurs haut/droite), bord droit arrondi conservé. Des halos rose/prune floutés (`blur-3xl`) sur fond `plum-950` sont fixés **derrière** la vitre (dans le composant, en `-z-10`) et suivent l'ouverture/fermeture du menu. Garde le Material + Organic (pilule rose optimiste, formes galet, blobs) | `src/components/layout/Sidebar.tsx` |
+
 ### Notes techniques
 - Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
 - Les types métier partagés (Payment, Client, Appointment, Service, Employee, StockItem, Campaign…) sont dans `src/types/index.ts`.
