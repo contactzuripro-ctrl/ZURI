@@ -1,9 +1,9 @@
 import { PageHeader } from "@/components/layout/PageHeader";
 import { NewCampaignAction } from "@/features/marketing/NewCampaignAction";
-import { LoyaltySummaryCards } from "@/features/marketing/LoyaltySummaryCards";
-import { CampaignsTable } from "@/features/marketing/CampaignsTable";
+import { MarketingSummaryCards } from "@/features/marketing/MarketingSummaryCards";
+import { CampaignList } from "@/features/marketing/CampaignList";
 
-/** Marketing — campagnes SMS/WhatsApp, cartes de fidélité et taux de retour. */
+/** Marketing — indicateurs d'envois et liste des campagnes SMS/WhatsApp/fidélité. */
 export default function MarketingPage() {
   return (
     <>
@@ -11,12 +11,9 @@ export default function MarketingPage() {
         title="Marketing"
         action={<NewCampaignAction />}
       />
-      <div className="space-y-10 px-5 py-8 sm:px-10">
-        <LoyaltySummaryCards />
-        <section>
-          <h2 className="mb-4 text-lg font-semibold tracking-tight">Campagnes</h2>
-          <CampaignsTable />
-        </section>
+      <div className="space-y-8 px-5 py-8 sm:px-10">
+        <MarketingSummaryCards />
+        <CampaignList />
       </div>
     </>
   );

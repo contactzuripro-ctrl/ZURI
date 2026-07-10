@@ -69,11 +69,9 @@ export interface StockItem {
 export interface Campaign {
   id: string;
   name: string;
-  channel: "sms" | "whatsapp";
-  sentCount: number;
-  responseRate: number; // ex. 0.32 pour 32 %
-  status: "envoyee" | "programmee";
-  date: string; // date ISO "YYYY-MM-DD"
+  channel: "whatsapp" | "sms" | "fidelite";
+  description: string; // ex. "WhatsApp - envoyée à 320 clientes"
+  status: "active" | "permanente" | "programmee";
 }
 
 export interface ExpenseEntry {

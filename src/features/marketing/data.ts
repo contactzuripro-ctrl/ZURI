@@ -4,35 +4,37 @@ import type { Campaign } from "@/types";
 export const campaigns: Campaign[] = [
   {
     id: "cmp-1",
-    name: "Promo tresses du mardi",
+    name: "Promo tresses de rentrée",
     channel: "whatsapp",
-    sentCount: 240,
-    responseRate: 0.32,
-    status: "envoyee",
-    date: "2026-07-07",
+    description: "WhatsApp - envoyée à 320 clientes",
+    status: "active",
   },
   {
     id: "cmp-2",
-    name: "Relance clientes inactives",
+    name: "Rappel rendez-vous 24h",
     channel: "sms",
-    sentCount: 85,
-    responseRate: 0.18,
-    status: "envoyee",
-    date: "2026-07-01",
+    description: "SMS automatique - récurrente",
+    status: "active",
   },
   {
     id: "cmp-3",
-    name: "Offre fête nationale",
+    name: "Carte de fidélité - 10e visite offerte",
+    channel: "fidelite",
+    description: "Automatique - 89 clientes inscrites",
+    status: "permanente",
+  },
+  {
+    id: "cmp-4",
+    name: "Offre fête des mères",
     channel: "whatsapp",
-    sentCount: 0,
-    responseRate: 0,
+    description: "WhatsApp - programmée pour le 12 mai",
     status: "programmee",
-    date: "2026-08-07",
   },
 ];
 
-export const loyaltySummary = {
-  activeCards: 132,
-  rewardsRedeemedThisMonth: 17,
-  returnRate: 0.64,
+export const marketingSummary = {
+  messagesSentThisMonth: 1840,
+  monthLabel: "juillet",
+  openRate: 0.64,
+  couponsUsed: 57,
 };
