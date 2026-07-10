@@ -65,6 +65,8 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 
 | 2026-07-10 | Bouton ouvrir/fermer le menu | Bouton neumorphique dans l'en-tête de chaque page qui replie/déplie la sidebar (animation 300 ms). État partagé via contexte React (`SidebarProvider` dans le layout racine, hook `useSidebar`) | `src/components/layout/` (`SidebarContext`, `SidebarToggle`, `PageHeader`, `Sidebar`), `src/app/layout.tsx` |
 
+| 2026-07-10 | Organic Design du contenu | Touche organique sur le contenu (en plus du neumorphism) : cartes, boutons, bouton de menu, cartes RDV et avatars en coins asymétriques « galet » ; 3 blobs or/prune très discrets fixés derrière le contenu (`OrganicBackdrop`) | `src/components/ui/` (`Card`, `PrimaryButton`), `src/components/layout/` (`OrganicBackdrop`, `SidebarToggle`), features agenda/employés |
+
 ### Notes techniques
 - Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
 - Les types métier partagés (Payment, Client, Appointment, Service, Employee, StockItem, Campaign…) sont dans `src/types/index.ts`.

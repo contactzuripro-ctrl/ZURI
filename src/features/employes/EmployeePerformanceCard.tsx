@@ -21,7 +21,7 @@ export function EmployeePerformanceCard({
   return (
     <Card className="p-6">
       <div className="flex items-center gap-3">
-        <span className="flex size-11 items-center justify-center rounded-full bg-plum-800 font-semibold text-white shadow-neu-sm">
+        <span className="flex size-11 items-center justify-center rounded-[55%_45%_62%_38%/48%_60%_40%_52%] bg-plum-800 font-semibold text-white shadow-neu-sm">
           {employee.fullName.charAt(0)}
         </span>
         <div>
