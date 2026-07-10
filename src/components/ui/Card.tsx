@@ -6,13 +6,14 @@ interface CardProps {
 }
 
 /**
- * Conteneur minimaliste à la forme organique : gris très clair, sans ombre
- * ni bordure, coins asymétriques très arrondis (galet).
+ * Conteneur en verre à la forme organique : translucide avec flou
+ * d'arrière-plan et bords lumineux (utilitaire `glass` de globals.css),
+ * coins asymétriques très arrondis (galet).
  */
 export function Card({ children, className = "" }: CardProps) {
   return (
     <div
-      className={`rounded-[2.2rem_1.5rem_2.2rem_1.5rem/1.5rem_2.2rem_1.5rem_2.2rem] bg-surface ${className}`}
+      className={`glass rounded-[2.2rem_1.5rem_2.2rem_1.5rem/1.5rem_2.2rem_1.5rem_2.2rem] ${className}`}
     >
       {children}
     </div>
