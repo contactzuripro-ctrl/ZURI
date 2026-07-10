@@ -9,8 +9,9 @@ interface SidebarLinkProps {
 }
 
 /**
- * Lien de navigation glassmorphique : la route active est une pastille
- * de verre (fond blanc translucide + liseré), les autres s'éclaircissent au survol.
+ * Lien de navigation façon Material Design (navigation drawer) :
+ * l'item actif est une pilule pleine or très contrastée ; les autres
+ * réagissent au survol par un voile clair (state layer).
  */
 export function SidebarLink({ item }: SidebarLinkProps) {
   const pathname = usePathname();
@@ -20,13 +21,13 @@ export function SidebarLink({ item }: SidebarLinkProps) {
   return (
     <Link
       href={item.href}
-      className={`flex items-center gap-3 rounded-2xl px-4 py-3 text-[15px] transition-all ${
+      className={`flex items-center gap-3 rounded-full px-4 py-3 text-[15px] transition-colors ${
         isActive
-          ? "border border-white/25 bg-white/15 font-semibold text-gold-400 shadow-lg shadow-plum-950/30 backdrop-blur"
-          : "border border-transparent text-cream-200 hover:bg-white/5 hover:text-white"
+          ? "bg-gold-500 font-semibold text-plum-950 shadow-md"
+          : "text-cream-200 hover:bg-white/10 hover:text-white active:bg-white/20"
       }`}
     >
-      <Icon size={20} strokeWidth={1.8} />
+      <Icon size={20} strokeWidth={isActive ? 2.2 : 1.8} />
       {item.label}
     </Link>
   );

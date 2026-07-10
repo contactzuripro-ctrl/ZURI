@@ -61,7 +61,7 @@ Règle : une feature vit dans `src/features/<nom-feature>/`. Les pages dans `src
 | 2026-07-10 | 09 Marketing | Indicateurs fidélité + tableau des campagnes SMS / WhatsApp (envois, taux de réponse) | `src/app/marketing/`, `src/features/marketing/` |
 | 2026-07-10 | Paramètres | Écran d'infos du salon (nom, devise, moyens de paiement) — à compléter | `src/app/parametres/` |
 | 2026-07-10 | Design Neumorphism | Refonte du contenu en soft UI : surfaces couleur du fond, relief par double ombre (`shadow-neu`, `shadow-neu-sm`), éléments actifs/creusés en ombre interne (`shadow-neu-inset`, `shadow-neu-inset-sm`) — badges, boutons (enfoncés au clic), barres de progression, cartes RDV | `src/app/globals.css` (tokens d'ombres), `src/components/ui/`, features |
-| 2026-07-10 | Menu Glassmorphism | Sidebar en verre dépoli : fond prune translucide + `backdrop-blur-2xl`, liserés blancs subtils, lien actif = pastille de verre ; halos de couleur or/prune derrière la sidebar pour rendre le flou visible | `src/components/layout/` (`Sidebar`, `SidebarLink`, `GlassBackdrop`), `src/app/layout.tsx` |
+| 2026-07-10 | Menu Material Design | Sidebar façon navigation drawer M3 (remplace un essai glassmorphism supprimé) : surface prune unie avec élévation, item actif = pilule pleine or (`rounded-full`), survol = state layer `bg-white/10`, logo en pastille or | `src/components/layout/` (`Sidebar`, `SidebarLink`), `src/app/layout.tsx` |
 
 ### Notes techniques
 - Toutes les données des écrans sont des **données de démonstration** dans `src/features/<feature>/data.ts` — à remplacer par une vraie API/BDD.
