@@ -87,20 +87,39 @@ body {
     0 14px 44px var(--glass-shadow);
 }
 
-/* Entrée de page à chaque navigation : fondu + glissement + zoom léger */
-@keyframes page-in {
+/* Entrée de page à chaque navigation : les composants (en-tête puis
+   chaque bloc du contenu) montent en fondu, en cascade. Le sélecteur
+   cible les enfants directs du conteneur de contenu de chaque page. */
+@keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(0.75rem) scale(0.995);
+    transform: translateY(1.1rem);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
-@utility animate-page-in {
-  animation: page-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+.animate-page-in > header {
+  animation: fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-page-in > div > * {
+  animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 80ms;
+}
+
+.animate-page-in > div > *:nth-child(2) {
+  animation-delay: 170ms;
+}
+
+.animate-page-in > div > *:nth-child(3) {
+  animation-delay: 260ms;
+}
+
+.animate-page-in > div > *:nth-child(n + 4) {
+  animation-delay: 350ms;
 }
 
 /* Curseur clignotant de l'effet machine à écrire (barre de recherche) */
