@@ -25,7 +25,7 @@ export function SidebarLink({ item }: SidebarLinkProps) {
       className={`flex items-center gap-3 rounded-[1.6rem_1.1rem_1.7rem_1rem/1.1rem_1.7rem_1rem_1.6rem] px-4 py-3 text-[15px] transition-all ${
         isActive
           ? "bg-accent-500 font-semibold text-plum-950 shadow-md"
-          : "text-cream-200 hover:bg-white/10 hover:text-white active:bg-white/20"
+          : "text-cream-200 hover:bg-accent-500/25 hover:text-accent-400 active:bg-accent-500/50 active:text-white"
       }`}
     >
       <Icon size={20} strokeWidth={isActive ? 2.2 : 1.8} />

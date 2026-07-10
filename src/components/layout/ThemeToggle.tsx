@@ -36,7 +36,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="flex w-full items-center gap-3 rounded-[1.6rem_1.1rem_1.7rem_1rem/1.1rem_1.7rem_1rem_1.6rem] px-4 py-3 text-[15px] text-cream-200 transition-colors hover:bg-white/10 hover:text-white active:bg-white/20"
+      className="flex w-full items-center gap-3 rounded-[1.6rem_1.1rem_1.7rem_1rem/1.1rem_1.7rem_1rem_1.6rem] px-4 py-3 text-[15px] text-cream-200 transition-colors hover:bg-accent-500/25 hover:text-accent-400 active:bg-accent-500/50 active:text-white"
     >
       {isDark ? (
         <Sun size={20} strokeWidth={1.8} />
