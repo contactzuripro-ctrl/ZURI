@@ -6,7 +6,7 @@ export default function ParametresPage() {
   return (
     <>
       <PageHeader title="Paramètres" />
-      <div className="px-10 py-8">
+      <div className="px-5 py-8 sm:px-10">
         <Card className="p-6">
           <h2 className="text-lg font-semibold tracking-tight">Informations du salon</h2>
           <dl className="mt-4 space-y-3 text-[15px]">

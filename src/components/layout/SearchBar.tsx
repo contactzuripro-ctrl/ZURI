@@ -103,9 +103,9 @@ export function SearchBar() {
   };
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative w-full sm:w-auto">
       <div className="search-ring rounded-full p-[2px] transition-shadow duration-300 focus-within:shadow-[0_0_18px_rgba(227,155,177,0.55)]">
-        <label className="group relative flex w-64 items-center gap-3 rounded-full bg-elevated px-1.5 py-1.5 transition-all duration-300 ease-out focus-within:w-96">
+        <label className="group relative flex w-full items-center gap-3 rounded-full bg-elevated px-1.5 py-1.5 transition-all duration-300 ease-out sm:w-64 sm:focus-within:w-96">
           <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent-500 text-plum-950">
             <Search size={16} strokeWidth={2.2} />
           </span>
@@ -133,7 +133,7 @@ export function SearchBar() {
       </div>
 
       {isOpen && (
-        <div className="animate-dropdown-in absolute top-full right-0 z-50 mt-3 w-72 rounded-[1.8rem_1.2rem_1.8rem_1.2rem/1.2rem_1.8rem_1.2rem_1.8rem] border border-hairline bg-elevated p-2 shadow-xl">
+        <div className="animate-dropdown-in absolute top-full right-0 left-0 z-50 mt-3 rounded-[1.8rem_1.2rem_1.8rem_1.2rem/1.2rem_1.8rem_1.2rem_1.8rem] border border-hairline bg-elevated p-2 shadow-xl sm:left-auto sm:w-72">
           <p className="px-3 pt-2 pb-1 text-xs font-medium uppercase tracking-wider text-ink-400">
             Pages
           </p>
@@ -147,7 +147,7 @@ export function SearchBar() {
                 style={{ animationDelay: `${index * 35}ms` }}
                 className="animate-dropdown-item flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ink-900 transition-colors hover:bg-accent-500/15"
               >
-                <span className="flex size-7 items-center justify-center rounded-lg bg-surface text-plum-800">
+                <span className="flex size-7 items-center justify-center rounded-lg bg-surface text-plum-800 dark:text-accent-400">
                   <Icon size={15} strokeWidth={2} />
                 </span>
                 {item.label}

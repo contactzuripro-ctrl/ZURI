@@ -1,6 +1,5 @@
-import { Send } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { PrimaryButton } from "@/components/ui/PrimaryButton";
+import { NewCampaignAction } from "@/features/marketing/NewCampaignAction";
 import { LoyaltySummaryCards } from "@/features/marketing/LoyaltySummaryCards";
 import { CampaignsTable } from "@/features/marketing/CampaignsTable";
 
@@ -10,13 +9,9 @@ export default function MarketingPage() {
     <>
       <PageHeader
         title="Marketing"
-        action={
-          <PrimaryButton icon={<Send size={18} />}>
-            Nouvelle campagne
-          </PrimaryButton>
-        }
+        action={<NewCampaignAction />}
       />
-      <div className="space-y-10 px-10 py-8">
+      <div className="space-y-10 px-5 py-8 sm:px-10">
         <LoyaltySummaryCards />
         <section>
           <h2 className="mb-4 text-lg font-semibold tracking-tight">Campagnes</h2>

@@ -1,6 +1,5 @@
-import { Link2 } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { PrimaryButton } from "@/components/ui/PrimaryButton";
+import { PaymentLinkAction } from "@/features/paiements/PaymentLinkAction";
 import { PaymentsSummaryCards } from "@/features/paiements/PaymentsSummaryCards";
 import { PaymentsTable } from "@/features/paiements/PaymentsTable";
 
@@ -10,13 +9,9 @@ export default function PaiementsPage() {
     <>
       <PageHeader
         title="Paiements"
-        action={
-          <PrimaryButton icon={<Link2 size={18} />}>
-            Envoyer un lien de paiement
-          </PrimaryButton>
-        }
+        action={<PaymentLinkAction />}
       />
-      <div className="space-y-10 px-10 py-8">
+      <div className="space-y-10 px-5 py-8 sm:px-10">
         <PaymentsSummaryCards />
         <PaymentsTable />
       </div>

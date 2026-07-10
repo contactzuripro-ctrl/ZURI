@@ -30,8 +30,8 @@ export function MonthView({
   const weeks = getMonthGrid(monthDate.getFullYear(), monthDate.getMonth());
 
   return (
-    <Card className="overflow-hidden p-4">
-      <div className="grid grid-cols-7">
+    <Card className="overflow-x-auto p-4">
+      <div className="grid min-w-140 grid-cols-7">
         {WEEKDAY_LABELS.map((label) => (
           <div
             key={label}
@@ -45,7 +45,7 @@ export function MonthView({
       {weeks.map((week) => (
         <div
           key={toIsoDate(week[0])}
-          className="grid grid-cols-7 border-t border-hairline"
+          className="grid min-w-140 grid-cols-7 border-t border-hairline"
         >
           {week.map((day) => {
             const isCurrentMonth = day.getMonth() === monthDate.getMonth();

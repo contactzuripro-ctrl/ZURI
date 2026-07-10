@@ -40,7 +40,8 @@ interface DayViewProps {
 /**
  * Vue Jour : grille horaire (08:00–19:00) avec une colonne par employée
  * affichée, les rendez-vous sont positionnés et dimensionnés selon leur
- * horaire.
+ * horaire. Sur mobile, la grille laisse place à une simple liste de
+ * rendez-vous triés par heure.
  */
 export function DayView({
   date,
@@ -53,10 +54,51 @@ export function DayView({
   const gridHeight = `${(hourLabels.length - 1) * HOUR_HEIGHT_REM}rem`;
   const gridTemplateColumns = `4rem repeat(${visibleEmployees.length}, minmax(0, 1fr))`;
 
+  const sortedAppointments = [...dayAppointments].sort((a, b) =>
+    a.startTime.localeCompare(b.startTime),
+  );
+
   return (
-    <Card className="overflow-x-auto p-6">
+    <Card className="overflow-x-auto p-4 sm:p-6">
+      {/* Liste mobile : un rendez-vous par carte, triés par heure */}
+      <div className="space-y-3 sm:hidden">
+        {sortedAppointments.length === 0 && (
+          <p className="py-8 text-center text-sm text-ink-400">
+            Aucun rendez-vous ce jour
+          </p>
+        )}
+        {sortedAppointments.map((appointment) => (
+          <div
+            key={appointment.id}
+            className={`flex items-center gap-3 rounded-[1.2rem_0.8rem_1.2rem_0.8rem/0.8rem_1.2rem_0.8rem_1.2rem] p-3 shadow-md ${employeeColors[appointment.employeeName]}`}
+          >
+            <Avatar
+              fullName={appointment.employeeName}
+              photoUrl={employeePhotos[appointment.employeeName]}
+              color={employeeColors[appointment.employeeName]}
+              sizeClass="size-10 text-sm"
+            />
+            <div className="min-w-0">
+              <p className="text-xs font-semibold">
+                {appointment.startTime} – {appointment.endTime} ·{" "}
+                {appointment.employeeName}
+              </p>
+              <p className="truncate text-sm font-bold">
+                {appointment.clientName}
+              </p>
+              <p className="truncate text-xs opacity-80">
+                {appointment.serviceName}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
       {/* En-têtes des colonnes employées */}
-      <div className="grid min-w-160 gap-3" style={{ gridTemplateColumns }}>
+      <div
+        className="hidden min-w-160 gap-3 sm:grid"
+        style={{ gridTemplateColumns }}
+      >
         <div />
         {visibleEmployees.map((employeeName) => (
           <div
@@ -75,7 +117,7 @@ export function DayView({
       </div>
 
       <div
-        className="relative grid min-w-160 gap-3"
+        className="relative hidden min-w-160 gap-3 sm:grid"
         style={{ height: gridHeight, gridTemplateColumns }}
       >
         {/* Colonne des heures + lignes horizontales */}

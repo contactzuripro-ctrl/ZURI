@@ -5,7 +5,7 @@ import { upcomingAppointments } from "@/features/tableau-de-bord/data";
 
 function AppointmentRow({ appointment }: { appointment: Appointment }) {
   return (
-    <li className="flex items-center justify-between border-t border-hairline px-8 py-5 first:border-t-0">
+    <li className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-hairline px-5 py-5 first:border-t-0 sm:px-8">
       <div className="flex items-center gap-4">
         <Avatar
           fullName={appointment.clientName}
@@ -30,7 +30,7 @@ function AppointmentRow({ appointment }: { appointment: Appointment }) {
 export function UpcomingAppointments() {
   return (
     <Card>
-      <h2 className="px-8 pt-7 pb-2 text-lg font-semibold tracking-tight">
+      <h2 className="px-5 pt-7 pb-2 text-lg font-semibold tracking-tight sm:px-8">
         Rendez-vous à venir
       </h2>
       <ul>

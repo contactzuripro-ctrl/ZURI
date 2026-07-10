@@ -74,7 +74,8 @@ export function CalendarHeader({
       <div className="flex flex-wrap items-center gap-4">
         {children}
 
-        <div className="flex gap-0.5 rounded-full bg-surface p-1">
+        {/* Bascule cachée sur mobile : seule la vue Jour y est disponible */}
+        <div className="hidden gap-0.5 rounded-full bg-surface p-1 sm:flex">
           {(["jour", "mois"] as const).map((viewOption) => (
             <button
               key={viewOption}

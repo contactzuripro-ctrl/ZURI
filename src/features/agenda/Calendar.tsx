@@ -15,20 +15,27 @@ import { EmployeeFilter } from "@/features/agenda/EmployeeFilter";
 import { MonthView } from "@/features/agenda/MonthView";
 import { DayView } from "@/features/agenda/DayView";
 import { appointments, employees } from "@/features/agenda/data";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 /**
  * Calendrier de l'agenda : bascule entre la vue Mois (grille complète)
  * et la vue Jour (grille horaire par employée). Cliquer un jour du mois
  * ouvre sa journée. Le filtre par employée s'applique aux deux vues.
+ * Sur mobile, seule la vue Jour existe (la grille du mois est inutilisable).
  */
 export function Calendar() {
   const [view, setView] = useState<CalendarView>("mois");
   const [currentDate, setCurrentDate] = useState(() => new Date());
   const [selectedEmployee, setSelectedEmployee] = useState<string | null>(null);
 
-  const step = view === "mois" ? addMonths : addDays;
+  const isMobile = useIsMobile();
+  const effectiveView: CalendarView = isMobile ? "jour" : view;
+
+  const step = effectiveView === "mois" ? addMonths : addDays;
   const title =
-    view === "mois" ? formatMonthTitle(currentDate) : formatDayTitle(currentDate);
+    effectiveView === "mois"
+      ? formatMonthTitle(currentDate)
+      : formatDayTitle(currentDate);
 
   const visibleAppointments = selectedEmployee
     ? appointments.filter(
@@ -48,7 +55,7 @@ export function Calendar() {
     <div className="space-y-6">
       <CalendarHeader
         title={title}
-        view={view}
+        view={effectiveView}
         onPrevious={() => setCurrentDate(step(currentDate, -1))}
         onNext={() => setCurrentDate(step(currentDate, 1))}
         onToday={() => setCurrentDate(new Date())}
@@ -60,7 +67,7 @@ export function Calendar() {
         />
       </CalendarHeader>
 
-      {view === "mois" ? (
+      {effectiveView === "mois" ? (
         <MonthView
           monthDate={currentDate}
           appointments={visibleAppointments}

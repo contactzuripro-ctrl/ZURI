@@ -1,6 +1,5 @@
-import { PackagePlus } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { PrimaryButton } from "@/components/ui/PrimaryButton";
+import { NewProductAction } from "@/features/stock/NewProductAction";
 import { StockTable } from "@/features/stock/StockTable";
 
 /** Stock — suivi des produits avec alertes de réapprovisionnement. */
@@ -9,13 +8,9 @@ export default function StockPage() {
     <>
       <PageHeader
         title="Stock"
-        action={
-          <PrimaryButton icon={<PackagePlus size={18} />}>
-            Ajouter un produit
-          </PrimaryButton>
-        }
+        action={<NewProductAction />}
       />
-      <div className="px-10 py-8">
+      <div className="px-5 py-8 sm:px-10">
         <StockTable />
       </div>
     </>
