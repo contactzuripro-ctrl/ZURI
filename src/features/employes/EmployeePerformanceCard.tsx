@@ -21,7 +21,7 @@ export function EmployeePerformanceCard({
   return (
     <Card className="p-6">
       <div className="flex items-center gap-3">
-        <span className="flex size-11 items-center justify-center rounded-full bg-plum-800 font-semibold text-white">
+        <span className="flex size-11 items-center justify-center rounded-full bg-plum-800 font-semibold text-white shadow-neu-sm">
           {employee.fullName.charAt(0)}
         </span>
         <div>
@@ -38,7 +38,7 @@ export function EmployeePerformanceCard({
             {formatAmount(employee.monthlyTarget)}
           </span>
         </div>
-        <div className="mt-2 h-2.5 rounded-full bg-cream-200">
+        <div className="mt-2 h-3 rounded-full bg-cream-100 shadow-neu-inset-sm">
           <div
             className={`h-full rounded-full ${progress >= 1 ? "bg-success-700" : "bg-gold-500"}`}
             style={{ width: `${progress * 100}%` }}
@@ -49,7 +49,7 @@ export function EmployeePerformanceCard({
         </p>
       </div>
 
-      <div className="mt-4 flex items-center justify-between rounded-xl bg-cream-50 px-4 py-3">
+      <div className="mt-4 flex items-center justify-between rounded-2xl bg-cream-100 px-4 py-3 shadow-neu-inset-sm">
         <span className="text-sm text-ink-600">
           Commission ({formatPercent(employee.commissionRate)})
         </span>

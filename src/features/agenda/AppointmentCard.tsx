@@ -4,10 +4,10 @@ interface AppointmentCardProps {
   appointment: Appointment;
 }
 
-/** Carte d'un rendez-vous dans la colonne d'une employée. */
+/** Carte d'un rendez-vous : creusée dans la colonne (inset), liseré or. */
 export function AppointmentCard({ appointment }: AppointmentCardProps) {
   return (
-    <div className="rounded-xl border-l-4 border-gold-500 bg-cream-50 p-4">
+    <div className="rounded-2xl border-l-4 border-gold-500 bg-cream-100 p-4 shadow-neu-inset-sm">
       <p className="text-sm font-medium text-plum-800">
         {appointment.startTime} – {appointment.endTime}
       </p>

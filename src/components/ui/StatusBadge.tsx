@@ -1,9 +1,9 @@
 type BadgeTone = "success" | "warning" | "danger";
 
 const toneClasses: Record<BadgeTone, string> = {
-  success: "bg-success-100 text-success-700",
-  warning: "bg-warning-100 text-warning-700",
-  danger: "bg-danger-100 text-danger-700",
+  success: "text-success-700",
+  warning: "text-warning-700",
+  danger: "text-danger-700",
 };
 
 interface StatusBadgeProps {
@@ -11,11 +11,11 @@ interface StatusBadgeProps {
   tone: BadgeTone;
 }
 
-/** Pastille de statut colorée (ex. « Payé », « En attente », « Rupture »). */
+/** Pastille de statut neumorphique : creusée (inset), texte coloré selon le ton. */
 export function StatusBadge({ label, tone }: StatusBadgeProps) {
   return (
     <span
-      className={`inline-block rounded-full px-3 py-1 text-sm font-medium ${toneClasses[tone]}`}
+      className={`inline-block rounded-full bg-cream-100 px-3.5 py-1.5 text-sm font-semibold shadow-neu-inset-sm ${toneClasses[tone]}`}
     >
       {label}
     </span>

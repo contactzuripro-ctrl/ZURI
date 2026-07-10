@@ -8,7 +8,10 @@ interface SidebarLinkProps {
   item: NavItem;
 }
 
-/** Lien de navigation de la sidebar, surligné quand la route est active. */
+/**
+ * Lien de navigation glassmorphique : la route active est une pastille
+ * de verre (fond blanc translucide + liseré), les autres s'éclaircissent au survol.
+ */
 export function SidebarLink({ item }: SidebarLinkProps) {
   const pathname = usePathname();
   const isActive = pathname === item.href;
@@ -17,10 +20,10 @@ export function SidebarLink({ item }: SidebarLinkProps) {
   return (
     <Link
       href={item.href}
-      className={`flex items-center gap-3 rounded-xl px-4 py-3 text-[15px] transition-colors ${
+      className={`flex items-center gap-3 rounded-2xl px-4 py-3 text-[15px] transition-all ${
         isActive
-          ? "bg-plum-700 font-semibold text-white"
-          : "text-cream-200 hover:bg-plum-700/50 hover:text-white"
+          ? "border border-white/25 bg-white/15 font-semibold text-gold-400 shadow-lg shadow-plum-950/30 backdrop-blur"
+          : "border border-transparent text-cream-200 hover:bg-white/5 hover:text-white"
       }`}
     >
       <Icon size={20} strokeWidth={1.8} />

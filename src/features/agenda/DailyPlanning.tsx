@@ -14,7 +14,7 @@ export function DailyPlanning() {
         return (
           <Card key={employeeName} className="p-5">
             <h2 className="mb-4 flex items-center gap-2 text-lg font-bold">
-              <span className="flex size-8 items-center justify-center rounded-full bg-plum-800 text-sm font-semibold text-white">
+              <span className="flex size-8 items-center justify-center rounded-full bg-plum-800 text-sm font-semibold text-white shadow-neu-sm">
                 {employeeName.charAt(0)}
               </span>
               {employeeName}

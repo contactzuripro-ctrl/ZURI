@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
-/* Palette Zuri : prune (sidebar), crème (fond), or (accents) */
+/*
+ * Palette Zuri + design Neumorphism (soft UI).
+ * Principe : les éléments ont LA MÊME couleur que le fond ; le relief vient
+ * d'une double ombre (claire en haut-gauche, sombre en bas-droite).
+ * Relief sortant = ombres externes ; état actif/enfoncé = ombres internes (inset).
+ */
 @theme {
   --color-plum-950: #2e1327;
   --color-plum-900: #3a1832;
@@ -8,9 +13,10 @@
   --color-plum-700: #5e3253;
   --color-plum-600: #714465;
 
-  --color-cream-50: #fdfbf7;
-  --color-cream-100: #f7f1e8;
-  --color-cream-200: #efe5d6;
+  /* Surface unique du neumorphism côté contenu */
+  --color-cream-50: #faf5ec;
+  --color-cream-100: #f0e9dc;
+  --color-cream-200: #e0d5c2;
 
   --color-gold-400: #c9a05e;
   --color-gold-500: #b98a44;
@@ -20,12 +26,19 @@
   --color-ink-600: #5f5359;
   --color-ink-400: #8d8188;
 
-  --color-success-100: #dcefd8;
   --color-success-700: #3d7a34;
-  --color-warning-100: #f6e3c1;
   --color-warning-700: #9a6b1f;
-  --color-danger-100: #f7dcd8;
   --color-danger-700: #a83a2c;
+
+  /* Ombres neumorphiques — surfaces crème */
+  --shadow-neu: 8px 8px 16px rgba(163, 148, 122, 0.45),
+    -8px -8px 16px rgba(255, 255, 255, 0.95);
+  --shadow-neu-sm: 4px 4px 8px rgba(163, 148, 122, 0.4),
+    -4px -4px 8px rgba(255, 255, 255, 0.9);
+  --shadow-neu-inset: inset 4px 4px 8px rgba(163, 148, 122, 0.45),
+    inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+  --shadow-neu-inset-sm: inset 2px 2px 5px rgba(163, 148, 122, 0.45),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.9);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

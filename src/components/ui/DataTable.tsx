@@ -15,13 +15,13 @@ interface DataTableProps<Row> {
   rowKey: (row: Row) => string;
 }
 
-/** Tableau générique du dashboard : en-tête crème, lignes séparées. */
+/** Tableau neumorphique : conteneur en relief, séparations discrètes. */
 export function DataTable<Row>({ columns, rows, rowKey }: DataTableProps<Row>) {
   return (
-    <Card className="overflow-x-auto">
+    <Card className="overflow-x-auto p-2">
       <table className="w-full min-w-155 text-left">
         <thead>
-          <tr className="bg-cream-50 text-sm text-ink-600">
+          <tr className="text-sm text-ink-600">
             {columns.map((column) => (
               <th
                 key={column.header}
@@ -36,7 +36,7 @@ export function DataTable<Row>({ columns, rows, rowKey }: DataTableProps<Row>) {
           {rows.map((row) => (
             <tr
               key={rowKey(row)}
-              className="border-t border-cream-200 text-[15px]"
+              className="border-t border-cream-200/70 text-[15px]"
             >
               {columns.map((column) => (
                 <td

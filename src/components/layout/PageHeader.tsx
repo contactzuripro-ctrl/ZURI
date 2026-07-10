@@ -6,10 +6,13 @@ interface PageHeaderProps {
   action?: ReactNode;
 }
 
-/** Bandeau blanc en haut de chaque page : titre + action principale. */
+/**
+ * En-tête de page neumorphique : fond identique au contenu,
+ * simplement le titre et l'action principale.
+ */
 export function PageHeader({ title, action }: PageHeaderProps) {
   return (
-    <header className="flex items-center justify-between border-b border-cream-200 bg-white px-8 py-5">
+    <header className="flex items-center justify-between px-8 pt-8 pb-2">
       <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
       {action}
     </header>
