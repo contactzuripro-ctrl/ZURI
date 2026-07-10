@@ -65,7 +65,7 @@ export function SearchBar() {
 
   return (
     <div className="search-ring rounded-full p-[2px] transition-shadow duration-300 focus-within:shadow-[0_0_18px_rgba(185,138,68,0.4)]">
-      <label className="group relative flex w-64 items-center gap-3 rounded-full bg-white px-1.5 py-1.5 transition-all duration-300 ease-out focus-within:w-96">
+      <label className="group relative flex w-64 items-center gap-3 rounded-full bg-elevated px-1.5 py-1.5 transition-all duration-300 ease-out focus-within:w-96">
         <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-gold-500 text-white">
           <Search size={16} strokeWidth={2.2} />
         </span>

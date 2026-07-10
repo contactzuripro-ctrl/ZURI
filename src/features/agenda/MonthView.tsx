@@ -61,7 +61,7 @@ export function MonthView({
                 key={toIsoDate(day)}
                 type="button"
                 onClick={() => onSelectDay(day)}
-                className={`flex min-h-24 flex-col items-stretch gap-1 p-1.5 text-left transition-colors hover:bg-white ${
+                className={`flex min-h-24 flex-col items-stretch gap-1 p-1.5 text-left transition-colors hover:bg-elevated ${
                   isCurrentMonth ? "" : "opacity-40"
                 }`}
               >

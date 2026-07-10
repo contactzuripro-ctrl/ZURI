@@ -76,7 +76,7 @@ export function CalendarHeader({
             onClick={() => onViewChange(viewOption)}
             className={`rounded-full px-4 py-1.5 text-sm font-medium capitalize transition-colors ${
               view === viewOption
-                ? "bg-white text-ink-900 shadow-sm"
+                ? "bg-elevated text-ink-900 shadow-sm"
                 : "text-ink-600 hover:text-ink-900"
             }`}
           >

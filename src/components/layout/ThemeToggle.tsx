@@ -1,0 +1,49 @@
+"use client";
+
+import { useSyncExternalStore } from "react";
+import { Moon, Sun } from "lucide-react";
+
+const THEME_STORAGE_KEY = "zuri-theme";
+
+/** Observe la classe `dark` de <html>, source de vérité du thème. */
+function subscribeToThemeClass(onChange: () => void) {
+  const observer = new MutationObserver(onChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+  return () => observer.disconnect();
+}
+
+/**
+ * Bouton mode nuit du menu : bascule la classe `dark` sur <html> et
+ * mémorise le choix dans localStorage (relu au chargement par un script
+ * inline du layout pour éviter tout flash).
+ */
+export function ThemeToggle() {
+  const isDark = useSyncExternalStore(
+    subscribeToThemeClass,
+    () => document.documentElement.classList.contains("dark"),
+    () => false, // rendu serveur : mode jour par défaut
+  );
+
+  const toggleTheme = () => {
+    document.documentElement.classList.toggle("dark", !isDark);
+    localStorage.setItem(THEME_STORAGE_KEY, !isDark ? "dark" : "light");
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={toggleTheme}
+      className="flex w-full items-center gap-3 rounded-[1.6rem_1.1rem_1.7rem_1rem/1.1rem_1.7rem_1rem_1.6rem] px-4 py-3 text-[15px] text-cream-200 transition-colors hover:bg-white/10 hover:text-white active:bg-white/20"
+    >
+      {isDark ? (
+        <Sun size={20} strokeWidth={1.8} />
+      ) : (
+        <Moon size={20} strokeWidth={1.8} />
+      )}
+      {isDark ? "Mode jour" : "Mode nuit"}
+    </button>
+  );
+}

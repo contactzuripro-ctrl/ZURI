@@ -80,7 +80,7 @@ export function DayView({ date, appointments }: DayViewProps) {
         {employees.map((employeeName) => (
           <div
             key={employeeName}
-            className="relative rounded-xl bg-white"
+            className="relative rounded-xl bg-elevated"
           >
             {/* Lignes d'heures */}
             {hourLabels.slice(1, -1).map((hour, index) => (

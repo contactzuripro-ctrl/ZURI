@@ -27,8 +27,17 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        {/* Applique le thème mémorisé avant le premier rendu (pas de flash) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(localStorage.getItem("zuri-theme")==="dark")document.documentElement.classList.add("dark");`,
+          }}
+        />
+      </head>
       <body className="flex min-h-screen">
         <SidebarProvider>
           <Sidebar />

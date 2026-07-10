@@ -1,6 +1,7 @@
 "use client";
 
 import { SidebarLink } from "@/components/layout/SidebarLink";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { useSidebar } from "@/components/layout/SidebarContext";
 import {
   mainNavItems,
@@ -44,7 +45,8 @@ export function Sidebar() {
         ))}
       </nav>
 
-      <div className="relative border-t border-white/10 pt-3">
+      <div className="relative flex flex-col gap-1.5 border-t border-white/10 pt-3">
+        <ThemeToggle />
         <SidebarLink item={settingsNavItem} />
       </div>
     </aside>
