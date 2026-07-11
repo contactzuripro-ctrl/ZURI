@@ -20,7 +20,12 @@ function subscribeToThemeClass(onChange: () => void) {
  * mémorise le choix dans localStorage (relu au chargement par un script
  * inline du layout pour éviter tout flash).
  */
-export function ThemeToggle() {
+interface ThemeToggleProps {
+  /** Menu replié en rail (desktop) : icône seule, centrée, sans libellé. */
+  collapsed?: boolean;
+}
+
+export function ThemeToggle({ collapsed = false }: ThemeToggleProps) {
   const isDark = useSyncExternalStore(
     subscribeToThemeClass,
     () => document.documentElement.classList.contains("dark"),
@@ -36,14 +41,19 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      className="flex w-full items-center gap-3 rounded-[1.6rem_1.1rem_1.7rem_1rem/1.1rem_1.7rem_1rem_1.6rem] px-4 py-3 text-[15px] text-cream-200 transition-colors hover:bg-accent-500/25 hover:text-accent-400 active:bg-accent-500/50 active:text-white"
+      title={collapsed ? (isDark ? "Mode jour" : "Mode nuit") : undefined}
+      className={`flex w-full items-center gap-3 rounded-[1.6rem_1.1rem_1.7rem_1rem/1.1rem_1.7rem_1rem_1.6rem] px-4 py-3 text-[15px] text-cream-200 transition-colors hover:bg-accent-500/25 hover:text-accent-400 active:bg-accent-500/50 active:text-white ${
+        collapsed ? "lg:justify-center lg:px-0" : ""
+      }`}
     >
       {isDark ? (
-        <Sun size={20} strokeWidth={1.8} />
+        <Sun size={20} strokeWidth={1.8} className="shrink-0" />
       ) : (
-        <Moon size={20} strokeWidth={1.8} />
+        <Moon size={20} strokeWidth={1.8} className="shrink-0" />
       )}
-      {isDark ? "Mode jour" : "Mode nuit"}
+      <span className={collapsed ? "lg:hidden" : ""}>
+        {isDark ? "Mode jour" : "Mode nuit"}
+      </span>
     </button>
   );
 }
