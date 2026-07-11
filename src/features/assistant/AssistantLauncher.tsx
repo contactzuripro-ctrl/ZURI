@@ -33,17 +33,38 @@ export function AssistantLauncher() {
 
   return (
     <>
+      {/* Petite bulle de dialogue animée au-dessus du cercle : elle flotte
+          doucement, 3 points « en train d'écrire » ; disparaît avec le cercle. */}
+      <div
+        aria-hidden
+        className={`pointer-events-none fixed right-8 bottom-[6.6rem] z-[44] transition-all duration-200 ${
+          isOpen ? "scale-0 opacity-0" : ""
+        }`}
+      >
+        <div className="animate-bubble-float relative rounded-[1.1rem_1.1rem_1.1rem_0.2rem] bg-white px-3.5 py-2.5 shadow-[0_6px_18px_rgba(43,20,38,0.22)]">
+          <div className="flex items-center gap-1">
+            <span className="animate-chat-dot size-1.5 rounded-full bg-plum-800" />
+            <span className="animate-chat-dot size-1.5 rounded-full bg-plum-800 [animation-delay:0.18s]" />
+            <span className="animate-chat-dot size-1.5 rounded-full bg-plum-800 [animation-delay:0.36s]" />
+          </div>
+          {/* Queue de la bulle, pointée vers le cercle */}
+          <span className="absolute -bottom-1 left-1.5 size-2.5 rotate-45 rounded-[0.2rem] bg-white" />
+        </div>
+      </div>
+
       {/* Le cercle s'efface quand le volet est ouvert (le ✕ du volet ferme) */}
       <button
         type="button"
         aria-label="Ouvrir l'assistant Zuri"
         aria-expanded={isOpen}
         onClick={() => setIsOpen(true)}
-        className={`fixed right-6 bottom-6 z-[44] flex size-18 items-center justify-center rounded-full bg-white shadow-[0_10px_28px_rgba(43,20,38,0.30)] transition-all duration-200 hover:scale-105 active:scale-95 ${
+        className={`fixed right-6 bottom-6 z-[44] flex size-18 items-center justify-center overflow-hidden rounded-full bg-white shadow-[0_10px_28px_rgba(43,20,38,0.30)] transition-all duration-200 hover:scale-105 active:scale-95 ${
           isOpen ? "pointer-events-none scale-0 opacity-0" : ""
         }`}
       >
-        <Lottie animationData={launcherAnimation} loop className="size-16" />
+        {/* scale-125 : rogne la marge interne de l'animation pour qu'elle
+            remplisse le cercle (débord coupé par overflow-hidden). */}
+        <Lottie animationData={launcherAnimation} loop className="size-full scale-125" />
       </button>
 
       {/* Voile mobile : sur petit écran le volet passe en superposition */}

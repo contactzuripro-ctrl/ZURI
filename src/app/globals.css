@@ -143,6 +143,39 @@ body {
   animation: modal-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Bulle de dialogue de l'assistant : flottement doux + points « en train
+   d'écrire » (chaque point reçoit un delay négatif pour se décaler). */
+@keyframes bubble-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@utility animate-bubble-float {
+  animation: bubble-float 2.8s ease-in-out infinite;
+}
+
+@keyframes chat-dot {
+  0%,
+  60%,
+  100% {
+    transform: none;
+    opacity: 0.45;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+@utility animate-chat-dot {
+  animation: chat-dot 1.3s ease-in-out infinite;
+}
+
 /* Entrée de page à chaque navigation : les composants (en-tête puis
    chaque bloc du contenu) montent en fondu, en cascade. Le sélecteur
    cible les enfants directs du conteneur de contenu de chaque page. */
