@@ -23,7 +23,7 @@ export function PrimaryButton({
     <button
       type={type}
       onClick={onClick}
-      className="flex items-center gap-2 rounded-[1.6rem_1.1rem_1.7rem_1rem/1.1rem_1.7rem_1rem_1.6rem] bg-plum-900 px-6 py-3 text-[15px] font-medium text-white transition-opacity hover:opacity-85"
+      className="flex items-center justify-center gap-2 rounded-[1.6rem_1.1rem_1.7rem_1rem/1.1rem_1.7rem_1rem_1.6rem] bg-plum-900 px-6 py-3 text-[15px] font-medium whitespace-nowrap text-white transition-opacity hover:opacity-85"
     >
       {icon}
       {children}

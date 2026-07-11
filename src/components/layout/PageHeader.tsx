@@ -21,7 +21,9 @@ export function PageHeader({ title, action }: PageHeaderProps) {
           {title}
         </h1>
       </div>
-      <div className="flex w-full items-center gap-4 sm:w-auto">
+      {/* Mobile : recherche puis bouton empilés pleine largeur ;
+          dès sm ils reviennent côte à côte. */}
+      <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
         <SearchBar />
         {action}
       </div>
