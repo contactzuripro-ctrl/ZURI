@@ -30,7 +30,8 @@ export function AssistantChat() {
   const threadEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    threadEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    // block: "nearest" — ne fait défiler que le fil, pas la page derrière
+    threadEndRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, [messages]);
 
   const sendMessage = (event: FormEvent) => {
@@ -46,8 +47,8 @@ export function AssistantChat() {
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex max-h-64 flex-col gap-3 overflow-y-auto pr-1">
+    <div className="flex min-h-0 flex-1 flex-col gap-4">
+      <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto pr-1">
         {messages.map((message, index) => (
           <div
             key={index}

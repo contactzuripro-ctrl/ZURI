@@ -1,48 +1,92 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Lottie from "lottie-react";
-import { Modal } from "@/components/ui/Modal";
+import { X } from "lucide-react";
 import { AssistantChat } from "./AssistantChat";
 import launcherAnimation from "./animation.json";
-import modalAnimation from "./modal-animation.json";
 
 /**
- * Cercle blanc flottant en bas à droite de toutes les pages : l'animation
- * Lottie tourne en boucle à l'intérieur, le clic ouvre la modale de
- * l'assistant Zuri (UI seule — le vrai contenu d'aide viendra plus tard).
+ * Assistant Zuri : cercle blanc flottant en bas à droite + volet latéral
+ * intégré à l'écran. Sur desktop le volet est une colonne du layout — le
+ * contenu de la page se compresse pour lui laisser la place (même principe
+ * que la sidebar) ; sur mobile (< lg) il devient un tiroir en superposition
+ * avec voile, comme le menu. UI seule : le chat répond un message de démo.
  */
 export function AssistantLauncher() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [isOpen]);
+
+  // Largeur/opacité animées : fermé = 0, ouvert = colonne de 22 rem
+  // (pleine largeur plafonnée sur mobile).
+  const panelWidth = isOpen
+    ? "w-[22rem] max-lg:w-[min(22rem,85vw)] opacity-100"
+    : "pointer-events-none w-0 opacity-0";
 
   return (
     <>
-      {/* z-[44] : au-dessus du contenu et des en-têtes (z-40), sous le
-          tiroir mobile (z-[45]) et le voile de modale (z-50) */}
+      {/* Le cercle s'efface quand le volet est ouvert (le ✕ du volet ferme) */}
       <button
         type="button"
         aria-label="Ouvrir l'assistant Zuri"
-        onClick={() => setIsModalOpen(true)}
-        className="fixed right-6 bottom-6 z-[44] flex size-18 items-center justify-center rounded-full bg-white shadow-[0_10px_28px_rgba(43,20,38,0.30)] transition-transform duration-200 hover:scale-105 active:scale-95"
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen(true)}
+        className={`fixed right-6 bottom-6 z-[44] flex size-18 items-center justify-center rounded-full bg-white shadow-[0_10px_28px_rgba(43,20,38,0.30)] transition-all duration-200 hover:scale-105 active:scale-95 ${
+          isOpen ? "pointer-events-none scale-0 opacity-0" : ""
+        }`}
       >
         <Lottie animationData={launcherAnimation} loop className="size-16" />
       </button>
 
-      <Modal
-        open={isModalOpen}
-        title="Assistant Zuri"
-        subtitle="Votre aide au quotidien"
-        onClose={() => setIsModalOpen(false)}
+      {/* Voile mobile : sur petit écran le volet passe en superposition */}
+      <div
+        aria-hidden
+        onClick={() => setIsOpen(false)}
+        className={`fixed inset-0 z-[45] bg-plum-950/50 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
+          isOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
+
+      {/* Volet : colonne du layout sur desktop (compresse le contenu),
+          tiroir fixé à droite sur mobile. */}
+      <aside
+        aria-label="Assistant Zuri"
+        className={`glass-strong flex shrink-0 flex-col overflow-hidden rounded-l-[2.5rem] transition-all duration-300 max-lg:fixed max-lg:inset-y-0 max-lg:right-0 max-lg:z-50 lg:sticky lg:top-0 lg:h-screen ${panelWidth}`}
       >
-        <div className="flex flex-col gap-2">
-          <Lottie
-            animationData={modalAnimation}
-            loop
-            className="size-28 self-center"
-          />
+        {/* Largeur intérieure fixe : le texte ne se recompose pas pendant
+            l'animation d'ouverture, il est simplement révélé. */}
+        <div className="flex h-full w-[22rem] max-w-full shrink-0 flex-col p-6">
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <Lottie animationData={launcherAnimation} loop className="size-12" />
+              <div>
+                <h2 className="text-lg font-semibold text-ink-900">
+                  Assistant Zuri
+                </h2>
+                <p className="text-xs text-ink-600">Votre aide au quotidien</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              aria-label="Fermer l'assistant"
+              className="rounded-full p-2 text-ink-600 transition-colors hover:bg-surface hover:text-ink-900"
+            >
+              <X size={18} strokeWidth={2} />
+            </button>
+          </div>
+
           <AssistantChat />
         </div>
-      </Modal>
+      </aside>
     </>
   );
 }
