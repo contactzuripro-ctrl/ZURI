@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Lottie from "lottie-react";
 import { Modal } from "@/components/ui/Modal";
+import { AssistantChat } from "./AssistantChat";
 import launcherAnimation from "./animation.json";
 import modalAnimation from "./modal-animation.json";
 
@@ -33,13 +34,13 @@ export function AssistantLauncher() {
         subtitle="Votre aide au quotidien"
         onClose={() => setIsModalOpen(false)}
       >
-        <div className="flex flex-col items-center gap-5 text-center">
-          <Lottie animationData={modalAnimation} loop className="size-44" />
-          <p className="max-w-sm text-sm leading-relaxed text-ink-600">
-            Bonjour ! Je suis l&apos;assistant du salon Zuri. Bientôt, je
-            pourrai répondre à vos questions sur l&apos;agenda, les clientes,
-            les paiements et le stock.
-          </p>
+        <div className="flex flex-col gap-2">
+          <Lottie
+            animationData={modalAnimation}
+            loop
+            className="size-28 self-center"
+          />
+          <AssistantChat />
         </div>
       </Modal>
     </>
