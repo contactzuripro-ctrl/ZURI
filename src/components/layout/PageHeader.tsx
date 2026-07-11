@@ -17,7 +17,9 @@ export function PageHeader({ title, action }: PageHeaderProps) {
     <header className="flex flex-wrap items-center justify-between gap-4 px-5 pt-8 pb-4 sm:px-10 sm:pt-12">
       <div className="flex items-center gap-4">
         <SidebarToggle />
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+        {/* Titre en dégradé aux couleurs Zuri (prune → rose) ; en mode nuit
+            il part du crème pour rester lisible sur fond sombre. */}
+        <h1 className="bg-gradient-to-r from-plum-900 via-plum-600 to-accent-500 bg-clip-text text-2xl font-semibold tracking-wide text-transparent uppercase sm:text-3xl dark:from-cream-200 dark:via-accent-400 dark:to-accent-500">
           {title}
         </h1>
       </div>
