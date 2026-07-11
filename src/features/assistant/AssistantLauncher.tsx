@@ -55,11 +55,23 @@ export function AssistantLauncher() {
         }`}
       />
 
+      {/* Halos colorés derrière la vitre du volet : c'est eux que le
+          backdrop-blur floute (même principe que la sidebar — sans eux,
+          le verre n'a que le fond blanc de la page à flouter). */}
+      <div
+        aria-hidden
+        className={`pointer-events-none fixed inset-y-0 right-0 overflow-hidden rounded-l-[2.5rem] transition-all duration-300 max-lg:z-[45] lg:-z-10 ${panelWidth}`}
+      >
+        <div className="absolute -top-16 -right-14 size-72 rounded-full bg-accent-400/50 blur-3xl" />
+        <div className="absolute top-1/3 -left-10 size-64 rounded-full bg-plum-600/30 blur-3xl" />
+        <div className="absolute -right-10 -bottom-16 size-72 rounded-full bg-accent-500/40 blur-3xl" />
+      </div>
+
       {/* Volet : colonne du layout sur desktop (compresse le contenu),
           tiroir fixé à droite sur mobile. */}
       <aside
         aria-label="Assistant Zuri"
-        className={`glass-strong flex shrink-0 flex-col overflow-hidden rounded-l-[2.5rem] transition-all duration-300 max-lg:fixed max-lg:inset-y-0 max-lg:right-0 max-lg:z-50 lg:sticky lg:top-0 lg:h-screen ${panelWidth}`}
+        className={`glass flex shrink-0 flex-col overflow-hidden rounded-l-[2.5rem] transition-all duration-300 max-lg:fixed max-lg:inset-y-0 max-lg:right-0 max-lg:z-50 lg:sticky lg:top-0 lg:h-screen ${panelWidth}`}
       >
         {/* Largeur intérieure fixe : le texte ne se recompose pas pendant
             l'animation d'ouverture, il est simplement révélé. */}
