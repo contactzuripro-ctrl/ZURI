@@ -25,10 +25,10 @@ export function AssistantLauncher() {
     return () => document.removeEventListener("keydown", closeOnEscape);
   }, [isOpen]);
 
-  // Largeur/opacité animées : fermé = 0, ouvert = colonne de 22 rem
+  // Largeur/opacité animées : fermé = 0, ouvert = colonne de 26 rem
   // (pleine largeur plafonnée sur mobile).
   const panelWidth = isOpen
-    ? "w-[22rem] max-lg:w-[min(22rem,85vw)] opacity-100"
+    ? "w-[26rem] max-lg:w-[min(26rem,85vw)] opacity-100"
     : "pointer-events-none w-0 opacity-0";
 
   return (
@@ -75,7 +75,7 @@ export function AssistantLauncher() {
       >
         {/* Largeur intérieure fixe : le texte ne se recompose pas pendant
             l'animation d'ouverture, il est simplement révélé. */}
-        <div className="flex h-full w-[22rem] max-w-full shrink-0 flex-col p-6">
+        <div className="flex h-full w-[26rem] max-w-full shrink-0 flex-col p-6">
           <div className="mb-4 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <Lottie animationData={launcherAnimation} loop className="size-12" />
