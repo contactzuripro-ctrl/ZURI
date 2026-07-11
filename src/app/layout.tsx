@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { SidebarProvider } from "@/components/layout/SidebarContext";
 import { OrganicBackdrop } from "@/components/layout/OrganicBackdrop";
+import { AssistantLauncher } from "@/features/assistant/AssistantLauncher";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -44,6 +45,7 @@ export default function RootLayout({
         <SidebarProvider>
           <Sidebar />
           <main className="flex-1 overflow-x-hidden">{children}</main>
+          <AssistantLauncher />
         </SidebarProvider>
       </body>
     </html>
