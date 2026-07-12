@@ -1,5 +1,5 @@
 import { HeroSection } from "@/features/page-accueil/HeroSection";
-import { FeaturesSection } from "@/features/page-accueil/FeaturesSection";
+import { CategoriesSection } from "@/features/page-accueil/CategoriesSection";
 import { PricingSection } from "@/features/page-accueil/PricingSection";
 import { TestimonialsSection } from "@/features/page-accueil/TestimonialsSection";
 import { FaqSection } from "@/features/page-accueil/FaqSection";
@@ -14,7 +14,7 @@ export default function PageAccueil() {
   return (
     <>
       <HeroSection />
-      <FeaturesSection />
+      <CategoriesSection />
       <PricingSection />
       <TestimonialsSection />
       <FaqSection />
