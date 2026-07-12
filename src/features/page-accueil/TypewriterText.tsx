@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 
 interface TypewriterTextProps {
   text: string;
+  /** Portion de `text` mise en boîte (fond plein) — la boîte grandit avec
+      la frappe et disparaît à l'effacement. */
+  highlight?: string;
+  /** Classes de la boîte (fond, padding, couleur du texte). */
+  highlightClassName?: string;
   className?: string;
 }
 
@@ -13,7 +18,12 @@ interface TypewriterTextProps {
  * présent en invisible pour réserver la place (aucun saut de ligne pendant
  * la frappe).
  */
-export function TypewriterText({ text, className = "" }: TypewriterTextProps) {
+export function TypewriterText({
+  text,
+  highlight,
+  highlightClassName = "",
+  className = "",
+}: TypewriterTextProps) {
   const [visibleLength, setVisibleLength] = useState(0);
   const [isErasing, setIsErasing] = useState(false);
 
@@ -41,15 +51,56 @@ export function TypewriterText({ text, className = "" }: TypewriterTextProps) {
     return () => window.clearTimeout(timer);
   }, [visibleLength, isErasing, text]);
 
+  const highlightStart = highlight ? text.indexOf(highlight) : -1;
+  const highlightEnd =
+    highlightStart === -1 ? -1 : highlightStart + (highlight?.length ?? 0);
+
+  const typedBefore = text.slice(
+    0,
+    highlightStart === -1 ? visibleLength : Math.min(visibleLength, highlightStart)
+  );
+  const typedHighlight =
+    highlightStart === -1
+      ? ""
+      : text.slice(highlightStart, Math.min(visibleLength, highlightEnd));
+  const typedAfter =
+    highlightEnd === -1 ? "" : text.slice(highlightEnd, Math.max(visibleLength, highlightEnd));
+
+  // Le curseur suit la couleur du texte courant (bg-current) : il reste
+  // visible aussi bien hors de la boîte qu'à l'intérieur.
+  const cursor = (
+    <span className="animate-cursor-blink ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.12em] bg-current" />
+  );
+  const cursorInsideHighlight =
+    typedHighlight.length > 0 && visibleLength <= highlightEnd;
+
   return (
     <span className={`relative inline-block ${className}`}>
-      {/* Réserve l'espace du texte complet */}
+      {/* Réserve l'espace du texte complet — mêmes classes sur le fragment
+          en boîte pour que son padding compte dans la réservation. */}
       <span aria-hidden className="invisible">
-        {text}
+        {highlightStart === -1 ? (
+          text
+        ) : (
+          <>
+            {text.slice(0, highlightStart)}
+            <span className={highlightClassName}>
+              {text.slice(highlightStart, highlightEnd)}
+            </span>
+            {text.slice(highlightEnd)}
+          </>
+        )}
       </span>
       <span className="absolute inset-0">
-        {text.slice(0, visibleLength)}
-        <span className="animate-cursor-blink ml-1 inline-block h-[0.9em] w-[3px] translate-y-[0.12em] bg-accent-400" />
+        {typedBefore}
+        {typedHighlight && (
+          <span className={highlightClassName}>
+            {typedHighlight}
+            {cursorInsideHighlight && cursor}
+          </span>
+        )}
+        {typedAfter}
+        {!cursorInsideHighlight && cursor}
       </span>
     </span>
   );

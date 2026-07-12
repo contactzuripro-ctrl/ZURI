@@ -60,8 +60,12 @@ export function PricingSection() {
           {/* Même police que le titre du hero : capitales font-black serrées */}
           <h2 className="mt-4 text-3xl leading-[0.95] font-black tracking-tight text-white uppercase sm:text-4xl xl:text-5xl">
             Prise de rendez-vous directe,{" "}
+            {/* Seul « WhatsApp. » est en boîte pleine (comme « près de chez
+                vous. » du hero) — elle se tape et s'efface avec le texte */}
             <TypewriterText
               text="confirmée dans votre WhatsApp."
+              highlight="WhatsApp."
+              highlightClassName="bg-accent-400 px-2 text-plum-950"
               className="text-accent-400"
             />
           </h2>
@@ -73,7 +77,7 @@ export function PricingSection() {
         </Reveal>
         <Reveal
           delay={150}
-          className="w-full max-w-sm sm:max-w-md lg:absolute lg:right-10 lg:-top-14 lg:w-[36rem] lg:max-w-none"
+          className="w-full max-w-sm sm:max-w-md lg:absolute lg:right-10 lg:-top-4 lg:w-[36rem] lg:max-w-none"
         >
           <Image
             src="/accueil/iphone.webp"
