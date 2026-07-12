@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useCloseOnOutsideClick } from "@/hooks/useCloseOnOutsideClick";
+import { ClientLoginModal } from "./ClientLoginModal";
 
 interface MenuEntry {
   title: string;
@@ -74,6 +75,7 @@ const headerMenus: HeaderMenu[] = [
 export function LandingHeader() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const containerRef = useRef<HTMLElement>(null);
 
   useCloseOnOutsideClick(containerRef, () => {
@@ -168,14 +170,15 @@ export function LandingHeader() {
 
       {/* Actions à droite (desktop) */}
       <div className="hidden items-center gap-6 lg:flex">
-        <Link
-          href="/tableau-de-bord"
+        <button
+          type="button"
+          onClick={() => setIsLoginModalOpen(true)}
           className="text-[15px] font-medium text-plum-900 hover:underline"
         >
           Se connecter
-        </Link>
+        </button>
         <Link
-          href="/tableau-de-bord"
+          href="/connexion"
           className="bg-plum-900 px-5 py-2.5 text-[15px] font-medium text-white transition-opacity hover:opacity-85"
         >
           Espace prestataire
@@ -235,14 +238,18 @@ export function LandingHeader() {
             </a>
 
             <div className="flex flex-col gap-3 border-t border-plum-900/10 pt-5">
-              <Link
-                href="/tableau-de-bord"
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsLoginModalOpen(true);
+                }}
                 className="py-2 text-center text-[15px] font-medium text-plum-900 ring-1 ring-plum-900/25"
               >
                 Se connecter
-              </Link>
+              </button>
               <Link
-                href="/tableau-de-bord"
+                href="/connexion"
                 className="bg-plum-900 py-2.5 text-center text-[15px] font-medium text-white"
               >
                 Espace prestataire
@@ -251,6 +258,11 @@ export function LandingHeader() {
           </div>
         </div>
       )}
+
+      <ClientLoginModal
+        open={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </header>
   );
 }

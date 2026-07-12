@@ -56,7 +56,7 @@ export function ProSection() {
               </p>
               <p className="text-lg text-ink-600">pris toutes les secondes</p>
               <Link
-                href="/tableau-de-bord"
+                href="/connexion"
                 className="mt-4 bg-plum-900 px-6 py-3.5 text-[15px] font-medium text-white transition-opacity hover:opacity-85"
               >
                 Je suis un professionnel de beauté
