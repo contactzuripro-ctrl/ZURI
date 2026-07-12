@@ -20,7 +20,7 @@ export interface NavItem {
 
 /** Les 9 écrans du back-office, dans l'ordre du business plan. */
 export const mainNavItems: NavItem[] = [
-  { label: "Tableau de bord", href: "/", icon: LayoutGrid },
+  { label: "Tableau de bord", href: "/tableau-de-bord", icon: LayoutGrid },
   { label: "Agenda", href: "/agenda", icon: CalendarDays },
   { label: "Clients", href: "/clients", icon: Users },
   { label: "Paiements", href: "/paiements", icon: CreditCard },

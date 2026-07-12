@@ -98,7 +98,7 @@ export function LandingHeader() {
     >
       {/* Logo en texte simple */}
       <Link
-        href="/accueil"
+        href="/"
         className="text-2xl font-black tracking-[0.12em] text-plum-900 uppercase"
       >
         Zuri
@@ -169,13 +169,13 @@ export function LandingHeader() {
       {/* Actions à droite (desktop) */}
       <div className="hidden items-center gap-6 lg:flex">
         <Link
-          href="/"
+          href="/tableau-de-bord"
           className="text-[15px] font-medium text-plum-900 hover:underline"
         >
           Se connecter
         </Link>
         <Link
-          href="/"
+          href="/tableau-de-bord"
           className="bg-plum-900 px-5 py-2.5 text-[15px] font-medium text-white transition-opacity hover:opacity-85"
         >
           Espace prestataire
@@ -236,13 +236,13 @@ export function LandingHeader() {
 
             <div className="flex flex-col gap-3 border-t border-plum-900/10 pt-5">
               <Link
-                href="/"
+                href="/tableau-de-bord"
                 className="py-2 text-center text-[15px] font-medium text-plum-900 ring-1 ring-plum-900/25"
               >
                 Se connecter
               </Link>
               <Link
-                href="/"
+                href="/tableau-de-bord"
                 className="bg-plum-900 py-2.5 text-center text-[15px] font-medium text-white"
               >
                 Espace prestataire
