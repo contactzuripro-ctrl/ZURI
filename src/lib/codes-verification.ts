@@ -1,5 +1,5 @@
 import { createHash, randomInt } from "crypto";
-import { sql } from "./db";
+import { obtenirSql } from "./db";
 
 /** Durée de validité d'un code : 10 minutes. */
 const validiteMinutes = 10;
@@ -16,6 +16,7 @@ function hacherCode(code: string): string {
  * actif par numéro : un renvoi remplace le précédent).
  */
 export async function genererCodeVerification(whatsapp: string): Promise<string> {
+  const sql = obtenirSql();
   const code = String(randomInt(0, 1_000_000)).padStart(6, "0");
   await sql`
     INSERT INTO codes_verification (whatsapp, code_hash, expire_le, tentatives)
@@ -39,6 +40,7 @@ export async function verifierCodeVerification(
   whatsapp: string,
   code: string,
 ): Promise<ResultatVerification> {
+  const sql = obtenirSql();
   const [enregistrement] = await sql<
     { code_hash: string; expire_le: Date; tentatives: number }[]
   >`

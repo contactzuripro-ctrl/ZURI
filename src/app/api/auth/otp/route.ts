@@ -1,4 +1,4 @@
-import { sql } from "@/lib/db";
+import { obtenirSql } from "@/lib/db";
 import { genererCodeVerification } from "@/lib/codes-verification";
 import { normaliserNumeroWhatsapp } from "@/lib/salons";
 import { envoyerCodeParWhatsapp } from "@/lib/whatsapp";
@@ -34,6 +34,7 @@ export async function POST(request: Request) {
   }
 
   try {
+    const sql = obtenirSql();
     const [dejaInscrit] = await sql`SELECT 1 FROM salons WHERE whatsapp = ${whatsapp}`;
     if (dejaInscrit) {
       return Response.json(

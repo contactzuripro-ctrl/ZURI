@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { sql } from "./db";
+import { obtenirSql } from "./db";
 
 export interface SalonEnregistre {
   id: string;
@@ -30,6 +30,7 @@ export async function creerSalon(donnees: {
   adresse: string;
   motDePasse: string;
 }): Promise<SalonEnregistre> {
+  const sql = obtenirSql();
   const whatsapp = normaliserNumeroWhatsapp(donnees.whatsapp);
   const hash = await bcrypt.hash(donnees.motDePasse, 10);
 
@@ -46,6 +47,7 @@ export async function verifierIdentifiants(
   whatsappSaisi: string,
   motDePasse: string,
 ): Promise<SalonEnregistre | null> {
+  const sql = obtenirSql();
   const whatsapp = normaliserNumeroWhatsapp(whatsappSaisi);
   const [salon] = await sql<
     (SalonEnregistre & { mot_de_passe_hash: string })[]
