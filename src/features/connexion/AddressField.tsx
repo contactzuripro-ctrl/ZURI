@@ -19,6 +19,7 @@ interface AddressFieldProps {
   label: string;
   name: string;
   placeholder?: string;
+  defaultValue?: string;
 }
 
 /**
@@ -28,8 +29,13 @@ interface AddressFieldProps {
  * suggestions s'affichent dans un panneau sous le champ. Sélectionner une
  * suggestion remplit le champ ; le panneau se ferme au clic extérieur et à Échap.
  */
-export function AddressField({ label, name, placeholder }: AddressFieldProps) {
-  const [value, setValue] = useState("");
+export function AddressField({
+  label,
+  name,
+  placeholder,
+  defaultValue = "",
+}: AddressFieldProps) {
+  const [value, setValue] = useState(defaultValue);
   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   /** Coupe la recherche juste après une sélection (le champ change sans nouvelle saisie). */

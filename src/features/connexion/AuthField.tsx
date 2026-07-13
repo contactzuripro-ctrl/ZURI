@@ -5,6 +5,7 @@ interface AuthFieldProps {
   placeholder?: string;
   /** Préfixe affiché à gauche dans le champ, ex. l'indicatif "+225" (optionnel). */
   prefix?: string;
+  defaultValue?: string;
 }
 
 /**
@@ -18,6 +19,7 @@ export function AuthField({
   type = "text",
   placeholder,
   prefix,
+  defaultValue,
 }: AuthFieldProps) {
   return (
     <label className="block">
@@ -34,6 +36,7 @@ export function AuthField({
           name={name}
           type={type}
           placeholder={placeholder}
+          defaultValue={defaultValue}
           className={`w-full rounded-2xl border border-plum-900/15 bg-white px-4 py-2.5 text-[15px] text-plum-900 outline-none transition placeholder:text-ink-400 focus:border-accent-400 focus:ring-2 focus:ring-accent-400/35 ${
             prefix ? "pl-14" : ""
           }`}

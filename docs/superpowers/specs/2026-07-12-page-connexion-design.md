@@ -16,8 +16,18 @@ WhatsApp**, pas l'e-mail.
   - « Se connecter » et « Espace prestataire » du `LandingHeader` ;
   - « Je suis un professionnel de beauté » de `ProSection`.
 - Soumission d'un des deux formulaires → redirection `/tableau-de-bord`.
-  **UI seule** : aucune vérification, la vraie authentification sera branchée
-  plus tard.
+- ~~UI seule~~ **Mise à jour 2026-07-13 : vraie authentification** — comptes
+  salons dans Postgres Supabase (mot de passe bcrypt, numéro WhatsApp unique
+  normalisé `225…`), routes `POST /api/auth/inscription` et
+  `/api/auth/connexion`, cookie de session httpOnly `zuri-salon` (7 j).
+  Reste à faire : durcir la session (signature) et protéger les pages du
+  back-office.
+- **Mise à jour 2026-07-13 (bis) : OTP WhatsApp à l'inscription** —
+  inscription en 2 étapes (formulaire → code à 6 chiffres) via
+  `POST /api/auth/otp` ; codes hachés sha256, 10 min, 5 essais, usage
+  unique. Envoi par modèle Authentication (`WHATSAPP_TEMPLATE_OTP`) ;
+  le compte de test Meta ne permettant pas de créer ce modèle, repli
+  dev : code affiché à l'écran (`codeDev`, jamais en production).
 
 ## Écran
 

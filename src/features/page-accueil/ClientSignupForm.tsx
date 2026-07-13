@@ -4,6 +4,7 @@ import { PhotoField } from "@/components/ui/PhotoField";
 import { AddressField } from "@/features/connexion/AddressField";
 import { AuthField } from "@/features/connexion/AuthField";
 import { AuthSubmitButton } from "@/features/connexion/AuthSubmitButton";
+import { PhoneField } from "@/features/connexion/PhoneField";
 
 interface ClientSignupFormProps {
   /** Appelé à la validation (UI seule : referme la modale). */
@@ -29,11 +30,9 @@ export function ClientSignupForm({ onSubmitted }: ClientSignupFormProps) {
         name="nomComplet"
         placeholder="Ex. Awa Koné"
       />
-      <AuthField
+      <PhoneField
         label="Numéro WhatsApp"
         name="whatsapp"
-        type="tel"
-        prefix="+225"
         placeholder="07 08 09 10 11"
       />
       <AddressField

@@ -2,6 +2,7 @@
 
 import { AuthField } from "@/features/connexion/AuthField";
 import { AuthSubmitButton } from "@/features/connexion/AuthSubmitButton";
+import { PhoneField } from "@/features/connexion/PhoneField";
 
 interface ClientLoginFormProps {
   /** Appelé à la validation (UI seule : referme la modale). */
@@ -18,11 +19,9 @@ export function ClientLoginForm({ onSubmitted }: ClientLoginFormProps) {
       }}
       className="flex flex-col gap-4"
     >
-      <AuthField
+      <PhoneField
         label="Numéro WhatsApp"
         name="whatsapp"
-        type="tel"
-        prefix="+225"
         placeholder="07 08 09 10 11"
       />
       <AuthField
